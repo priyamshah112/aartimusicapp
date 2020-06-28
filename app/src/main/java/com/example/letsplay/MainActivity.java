@@ -6,15 +6,13 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar mToolbar;
     PagerAdapter mPagerAdapter;
     TabLayout mTabLayout;
-    TabItem musicTabItem;
-    TabItem albumTabItem;
-    TabItem playlistTabItem;
+    TabItem libraryTabItem;
+    TabItem aartiTabItem;
     ViewPager mViewPager;
 
 
@@ -25,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle(getString(R.string.app_name));
+//        getSupportActionBar().setTitle(getString(R.string.app_name));
 
         mTabLayout = findViewById(R.id.tabLayout);
-        musicTabItem = findViewById(R.id.musicTabItem);
-        albumTabItem = findViewById(R.id.albumTabItem);
-        playlistTabItem = findViewById(R.id.playlistTabItem);
+        libraryTabItem = findViewById(R.id.libraryTabItem);
+        aartiTabItem = findViewById(R.id.aartiTabItem);
+
         mViewPager = findViewById(R.id.pager);
 
         mPagerAdapter = new PagerAdapter(getSupportFragmentManager(),mTabLayout.getTabCount()); // call the pager class

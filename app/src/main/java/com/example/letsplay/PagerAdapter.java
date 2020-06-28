@@ -16,13 +16,11 @@ public class PagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int i) {
         switch (i){
             case 0:
-                return new Music();
+                return new Aarti();
             case 1:
-                return new Album();
-            case 2:
-                return new Playlist();
-                default:
-                    return null;
+                return new Library();
+            default:
+                return null;
         }
     }
 

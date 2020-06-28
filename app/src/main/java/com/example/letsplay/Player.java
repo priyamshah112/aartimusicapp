@@ -8,13 +8,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -70,7 +67,7 @@ public class Player extends AppCompatActivity {
         curListIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent list = new Intent(getApplicationContext(),CurrentList.class);
+                Intent list = new Intent(getApplicationContext(), CurrentPlayist.class);
                 list.putExtra("songsList",allSongs);
                 startActivity(list);
 

@@ -27,7 +27,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Music extends Fragment {
+public class Library extends Fragment {
 
     ListView mListView;
     ArrayList<String> musics;
@@ -35,7 +35,7 @@ public class Music extends Fragment {
     String[] songs;
 
 
-    public Music() {
+    public Library() {
         // Required empty public constructor
     }
 
@@ -48,7 +48,7 @@ public class Music extends Fragment {
         //setHasOptionsMenu(true);
 
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_music, container, false);
+        View view =  inflater.inflate(R.layout.fragment_library, container, false);
         mListView = view.findViewById(R.id.musicListView);
 
         askStoragePermissions();

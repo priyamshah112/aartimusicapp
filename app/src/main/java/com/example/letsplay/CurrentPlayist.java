@@ -12,7 +12,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 
-public class CurrentList extends AppCompatActivity {
+public class CurrentPlayist extends AppCompatActivity {
     Toolbar mListToolbar;
     ArrayList<File> currentSongs;
     ListView mListView;
