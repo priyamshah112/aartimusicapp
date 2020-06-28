@@ -63,12 +63,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
-
-
-
-
-
     }
-
-
 }

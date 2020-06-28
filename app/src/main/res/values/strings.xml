@@ -3,4 +3,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Coming Soon!</string>
+    <string name="language_prompt">Select a language</string>
+    <string-array name="language_array">
+        <item>English</item>
+        <item>Hindi</item>
+    </string-array>
 </resources>
