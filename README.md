@@ -1,3 +1,2 @@
-# AartiMusicApp
+Android Aarti App
 
-Android Aarti Music App
