@@ -75,6 +75,7 @@ public class Aarti extends Fragment implements View.OnClickListener {
                 System.out.println("morning");
                 String songName = "morning";
                 Intent play = new Intent(getActivity(),Player.class);
+                System.out.print(songName);
 //                play.putExtra("songs",allSongs).putExtra("songName",songName).putExtra("position",0);
 //                startActivity(play);
                 break;
