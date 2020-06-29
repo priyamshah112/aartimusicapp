@@ -1,7 +1,9 @@
 package com.example.letsplay;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 
 public class Player extends AppCompatActivity {
     SeekBar mSeekBar;
+    SeekBar vSeekBar;
     TextView songTitle;
     ArrayList<File> allSongs;
     static MediaPlayer mMediaPlayer;
@@ -29,7 +32,7 @@ public class Player extends AppCompatActivity {
     ImageView nextIcon;
     Intent playerData;
     Bundle bundle;
-
+    AudioManager audioManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,9 @@ public class Player extends AppCompatActivity {
         prevIcon = findViewById(R.id.prevIcon);
         nextIcon = findViewById(R.id.nextIcon);
 
+        vSeekBar = findViewById(R.id.vseekBar);
+
+        audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
 
 
 
@@ -139,7 +145,27 @@ public class Player extends AppCompatActivity {
             }
         });
 
+        //volume Seekbar
 
+        vSeekBar.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
+        vSeekBar.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
+
+        vSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int newVolume, boolean b) {
+
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, newVolume, 0);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+
+
+        //Music Seekbar
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
