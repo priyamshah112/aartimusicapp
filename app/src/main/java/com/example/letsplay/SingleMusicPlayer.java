@@ -3,7 +3,7 @@ package com.example.letsplay;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.net.Uri;
+//import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -13,13 +13,12 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import java.io.File;
-import java.util.ArrayList;
+//import java.io.File;
+//import java.util.ArrayList;
 
 public class SingleMusicPlayer extends AppCompatActivity {
     SeekBar mSeekBar;
     TextView songTitle;
-    ArrayList<File> allSongs;
     static MediaPlayer mMediaPlayer;
     int position;
     TextView curTime;
@@ -55,9 +54,8 @@ public class SingleMusicPlayer extends AppCompatActivity {
         playerData = getIntent();
         bundle = playerData.getExtras();
 
-        allSongs = (ArrayList) bundle.getParcelableArrayList("songs");
-        position = bundle.getInt("position", 0);
-        initPlayer(position);
+        //position = bundle.getInt("position", 0);
+        initPlayer();
 
 
 
@@ -67,48 +65,28 @@ public class SingleMusicPlayer extends AppCompatActivity {
                 play();
             }
         });
-        prevIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (position <= 0) {
-                    position = allSongs.size() - 1;
-                } else {
-                    position--;
-                }
-
-                initPlayer(position);
-
-            }
-        });
-
-        nextIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (position < allSongs.size() - 1) {
-                    position++;
-                } else {
-                    position = 0;
-
-                }
-                initPlayer(position);
-            }
-        });
 
     }
 
 
-    private void initPlayer(final int position) {
+    private void initPlayer() {
 
         if (mMediaPlayer != null && mMediaPlayer.isPlaying()) {
             mMediaPlayer.reset();
         }
 
-        String sname = allSongs.get(position).getName().replace(".mp3", "").replace(".m4a", "").replace(".wav", "").replace(".m4b", "");
-        songTitle.setText(sname);
-        Uri songResourceUri = Uri.parse(allSongs.get(position).toString());
-
-        mMediaPlayer = MediaPlayer.create(getApplicationContext(), songResourceUri); // create and load mediaplayer with song resources
+        if(bundle.getInt("id")==1){
+            songTitle.setText("Morning");
+            mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.morning); // create and load mediaplayer with song resources
+        }
+        if(bundle.getInt("id")==2){
+            songTitle.setText("Noon");
+            mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.afternoon); // create and load mediaplayer with song resources
+        }
+        if(bundle.getInt("id")==3){
+            songTitle.setText("Evening");
+            mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.evening); // create and load mediaplayer with song resources
+        }
         mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
@@ -117,24 +95,6 @@ public class SingleMusicPlayer extends AppCompatActivity {
                 mSeekBar.setMax(mMediaPlayer.getDuration());
                 mMediaPlayer.start();
                 playIcon.setImageResource(R.drawable.ic_pause_black_24dp);
-
-            }
-        });
-
-        mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                int curSongPoition = position;
-                // code to repeat songs until the
-                if (curSongPoition < allSongs.size() - 1) {
-                    curSongPoition++;
-                    initPlayer(curSongPoition);
-                } else {
-                    curSongPoition = 0;
-                    initPlayer(curSongPoition);
-                }
-
-                //playIcon.setImageResource(R.drawable.ic_play_arrow_black_24dp);
 
             }
         });
@@ -162,7 +122,6 @@ public class SingleMusicPlayer extends AppCompatActivity {
             }
         });
 
-
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -188,7 +147,6 @@ public class SingleMusicPlayer extends AppCompatActivity {
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-//            Log.i("handler ", "handler called");
             int current_position = msg.what;
             mSeekBar.setProgress(current_position);
             String cTime = createTimeLabel(current_position);
