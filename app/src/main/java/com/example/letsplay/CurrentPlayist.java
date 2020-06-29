@@ -40,7 +40,5 @@ public class CurrentPlayist extends AppCompatActivity {
         mArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,songs);
         mListView.setAdapter(mArrayAdapter);
 
-
-
     }
 }
