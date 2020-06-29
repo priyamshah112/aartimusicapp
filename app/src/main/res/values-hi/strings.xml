@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">भजन</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-
     <string name="select_time">आरती अधिसूचना समय का चयन करें</string>
     <string name="language_prompt">भाषा चुनें</string>
 </resources>
