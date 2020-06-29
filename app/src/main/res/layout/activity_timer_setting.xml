@@ -21,6 +21,7 @@
         android:layout_marginRight="65dp"
         android:layout_marginBottom="53dp"
         android:fontFamily="font/tienne_black"
+        android:textSize="30sp"
         android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
