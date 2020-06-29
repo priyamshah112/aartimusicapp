@@ -22,7 +22,7 @@ public class Aarti extends Fragment implements View.OnClickListener {
     Button mrngbutton;
     Button noonbutton;
     Button eveningbutton;
-//    ArrayList<File> allSongs = new ArrayList<File>(new File(this.getClass().getResource(R.raw.morning).getFile()) );
+    int[] allSongs = {R.raw.morning,R.raw.afternoon,R.raw.evening};
     public Aarti() {
         // Required empty public constructor
     }
@@ -76,8 +76,8 @@ public class Aarti extends Fragment implements View.OnClickListener {
                 String songName = "morning";
                 Intent play = new Intent(getActivity(),Player.class);
                 System.out.print(songName);
-//                play.putExtra("songs",allSongs).putExtra("songName",songName).putExtra("position",0);
-//                startActivity(play);
+                play.putExtra("songs",allSongs).putExtra("songName",songName).putExtra("position",0);
+                startActivity(play);
                 break;
             case R.id.NoonBtn:
                 System.out.println("Noon");
