@@ -18,7 +18,7 @@
         android:layout_marginRight="85dp"
         android:layout_marginBottom="85dp"
         android:gravity="center"
-        android:text="Select Language"
+        android:text="@string/language_prompt"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         android:textStyle="bold" />
