@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Aarti">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    android:background="@color/colorBackground"
+    android:weightSum="9"
+    tools:context=".Aarti"
+    android:padding="5dp">
+    <LinearLayout
+        android:background="@color/colorMorning"
+        android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_margin="10dp"
+        android:layout_weight="3" >
 
-</FrameLayout>
+        <Button
+            android:id="@+id/MorningBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorMorning"
+            android:onClick="MorningAartiPlayer"
+            android:text="Morning Aarti"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+    <LinearLayout
+
+        android:background="@color/colorNoon"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_weight="3" >
+
+        <Button
+            android:id="@+id/NoonBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorNoon"
+            android:onClick="NoonAartiPlayer"
+            android:text="Afternoon Aarti"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:background="@color/colorEvening"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_weight="3" >
+
+        <Button
+            android:id="@+id/EveningBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorEvening"
+            android:onClick="EveningAartiPlayer"
+            android:text="Evening Aarti"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+    </LinearLayout>

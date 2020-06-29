@@ -29,9 +29,6 @@ public class Player extends AppCompatActivity {
     ImageView nextIcon;
     Intent playerData;
     Bundle bundle;
-    ImageView repeatIcon;
-    ImageView suffleIcon;
-    ImageView curListIcon;
 
 
     @Override
@@ -48,9 +45,7 @@ public class Player extends AppCompatActivity {
         prevIcon = findViewById(R.id.prevIcon);
         nextIcon = findViewById(R.id.nextIcon);
 
-        repeatIcon = findViewById(R.id.repeatIcon);
-        suffleIcon = findViewById(R.id.suffleIcon);
-        curListIcon = findViewById(R.id.curListIcon);
+
 
 
         if (mMediaPlayer != null) {
@@ -64,15 +59,6 @@ public class Player extends AppCompatActivity {
         position = bundle.getInt("position", 0);
         initPlayer(position);
 
-        curListIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent list = new Intent(getApplicationContext(), CurrentPlayist.class);
-                list.putExtra("songsList",allSongs);
-                startActivity(list);
-
-            }
-        });
 
 
         playIcon.setOnClickListener(new View.OnClickListener() {
