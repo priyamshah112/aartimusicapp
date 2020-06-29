@@ -2,4 +2,18 @@
     <string name="app_name">भजन</string>
     <string name="select_time">आरती अधिसूचना समय का चयन करें</string>
     <string name="language_prompt">भाषा चुनें</string>
+    <string name="select_mrng_aarti_time">
+सुबह की आरती का अलर्ट सेट करें</string>
+    <string name="select_noon_aarti_time">
+दोपहर की आरती चेतावनी समय निर्धारित करें</string>
+    <string name="select_evening_aarti_time">इवनिंग आरती अलर्ट टाइम सेट करें</string>
+    <string name="next">
+आगे</string>
+    <string name="aarti">
+आरती</string>
+    <string name="library">संगीत प्लेलिस्ट</string>
+    <string name="mrng_aarti">सुबह की आरती</string>
+    <string name="noon_aarti">
+दोपहर की आरती</string>
+    <string name="eve_aarti">सायंकालीन आरती</string>
 </resources>

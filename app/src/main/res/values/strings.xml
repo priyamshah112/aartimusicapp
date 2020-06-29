@@ -10,4 +10,13 @@
         <item>English</item>
         <item>Hindi</item>
     </string-array>
+    <string name="select_mrng_aarti_time">Set Morning Aarti Alert Time</string>
+    <string name="select_noon_aarti_time">Set Afternoon Aarti Alert Time</string>
+    <string name="select_evening_aarti_time">Set Evening Aarti Alert Time</string>
+    <string name="next">Next</string>
+    <string name="aarti">Aarti</string>
+    <string name="library">Library</string>
+    <string name="mrng_aarti">Morning Aarti</string>
+    <string name="noon_aarti">Afternoon Aarti</string>
+    <string name="eve_aarti">Evening Aarti</string>
 </resources>
