@@ -33,7 +33,7 @@ public class NotificationHelper extends ContextWrapper {
         return mManager;
     }
     public NotificationCompat.Builder getChannelNotification() {
-        Intent resultIntent = new Intent(this, TimerSetting.class);
+        Intent resultIntent = new Intent(this, MainActivity.class);
         // Create the TaskStackBuilder and add the intent, which inflates the back stack
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addNextIntentWithParentStack(resultIntent);

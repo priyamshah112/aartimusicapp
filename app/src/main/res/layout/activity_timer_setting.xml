@@ -25,7 +25,7 @@
         android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="Select Aarti Notification Time" />
+        android:text="@string/select_time" />
 
     <Button
         android:id="@+id/btnSubmit"
@@ -41,7 +41,7 @@
         android:layout_marginBottom="48dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:text="Next" />
+        android:text="@string/next" />
 
 
     <Button
@@ -61,7 +61,7 @@
         android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="Set Morning Aarti Alert Time" />
+        android:text="@string/select_mrng_aarti_time" />
 
     <Button
         android:id="@+id/imageButton2"
@@ -80,7 +80,7 @@
         android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text=" Set Afternoon Arti Alert Time" />
+        android:text="@string/select_noon_aarti_time" />
 
     <Button
         android:id="@+id/imageButton"
@@ -99,7 +99,7 @@
         android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="Select Evening Aarti Alert Time" />
+        android:text="@string/select_evening_aarti_time" />
 
 
 </RelativeLayout>

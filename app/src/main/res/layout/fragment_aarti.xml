@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             android:background="@color/colorMorning"
             android:onClick="MorningAartiPlayer"
-            android:text="Morning Aarti"
+            android:text="@string/mrng_aarti"
             android:textSize="30sp" />
 
     </LinearLayout>
@@ -39,7 +39,7 @@
             android:layout_height="match_parent"
             android:background="@color/colorNoon"
             android:onClick="NoonAartiPlayer"
-            android:text="Afternoon Aarti"
+            android:text="@string/noon_aarti"
             android:textSize="30sp" />
 
     </LinearLayout>
@@ -56,7 +56,7 @@
             android:layout_height="match_parent"
             android:background="@color/colorEvening"
             android:onClick="EveningAartiPlayer"
-            android:text="Evening Aarti"
+            android:text="@string/eve_aarti"
             android:textColor="#FFFFFF"
             android:textSize="30sp" />
 
