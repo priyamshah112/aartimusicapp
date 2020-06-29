@@ -46,33 +46,29 @@ public class LanguageSelector extends AppCompatActivity {
     public void addListenerOnButton() {
         spinner1 = (Spinner) findViewById(R.id.spinner1);
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
-
+        setLocale("en");
         btnSubmit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                Log.w("on click occured","ckicked the button");
-                //error is in the below statement which is tobe resolved as it is giving a deprecated issue
                 str=(String) spinner1.getSelectedItem();
                 if (str.equals("English")){
-                    Log.w("enetered the locale 1"+String.valueOf(   spinner1.getSelectedItem()),"entered english");
-                    //setLocale("en");
+                    setLocale("en");
                 }
                 else if(str.equals("Hindi")){
-                    Log.w("enetered the locale 2"+String.valueOf(spinner1.getSelectedItem()),"entered hindi");
-                    //setLocale("hi");
+                    setLocale("hi");
                 }
 //                the below statements are to be recommented once the error is resoled
-//                Intent myIntent = new Intent(LanguageSelector.this,TimerSetting.class);
-//                startActivity(myIntent);
-//                myIntent.putExtra("language", String.valueOf(spinner1.getSelectedItem()));
+                Intent myIntent = new Intent(LanguageSelector.this,TimerSetting.class);
+                startActivity(myIntent);
+                myIntent.putExtra("language", String.valueOf(spinner1.getSelectedItem()));
                 }
             }
         );
     }
     private void setLocale(String lang){
-        Log.w("changing the locale","language change");
+        Log.w("changing the locale"+lang,"language change");
         Locale locale = new Locale(lang);
         locale.setDefault(locale);
         Configuration config = new Configuration();
