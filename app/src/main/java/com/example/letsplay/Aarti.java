@@ -70,28 +70,25 @@ public class Aarti extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        Intent singleplay = new Intent(getActivity(),SingleMusicPlayer.class);
         switch (v.getId()) {
             case R.id.MorningBtn:
                 System.out.println("morning");
                 String songName = "morning";
-                Intent play = new Intent(getActivity(),Player.class);
-                System.out.print(songName);
-//                play.putExtra("songs",allSongs).putExtra("songName",songName).putExtra("position",0);
-//                startActivity(play);
+                singleplay.putExtra("id",1);
+                startActivity(singleplay);
                 break;
             case R.id.NoonBtn:
                 System.out.println("Noon");
                 String songName1 = "afternoon";
-                Intent play1 = new Intent(getActivity(),Player.class);
-//                play1.putExtra("songs",allSongs).putExtra("songName",songName1).putExtra("position",1);
-//                startActivity(play1);
+                singleplay.putExtra("id",2);
+                startActivity(singleplay);
                 break;
             case R.id.EveningBtn:
                 System.out.println("Evening");
                 String songName2 = "evening";
-                Intent play2 = new Intent(getActivity(),Player.class);
-//                play2.putExtra("songs",allSongs).putExtra("songName",songName2).putExtra("position",2);
-//                startActivity(play2);
+                singleplay.putExtra("id",3);
+                startActivity(singleplay);
                 break;
         }
     }
