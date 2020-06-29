@@ -6,44 +6,24 @@
     android:background="@color/colorBackground"
     tools:context=".LanguageSelector">
 
+
     <TextView
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/spinner1"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
-        android:layout_marginRight="80dp"
+        android:layout_marginRight="91dp"
         android:layout_marginBottom="85dp"
         android:gravity="center"
         android:text="@string/language_prompt"
         android:textColor="@color/colorPrimary"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="bold" />
-
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="245dp"
-        android:layout_height="61dp"
-        android:layout_above="@+id/btnSubmit"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="83dp"
-        android:layout_marginLeft="83dp"
-        android:layout_marginEnd="83dp"
-        android:layout_marginRight="83dp"
-        android:layout_marginBottom="175dp"
-        android:background="@color/colorBackground"
-        android:entries="@array/language_array"
-        android:popupBackground="@color/colorBackground"
-        android:prompt="@string/language_prompt"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
 
     <Button
         android:id="@+id/btnSubmit"
@@ -64,4 +44,33 @@
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="Next" />
+
+    <RadioGroup
+        android:id="@+id/radio"
+        android:layout_width="231dp"
+        android:layout_height="154dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="60sp"
+        android:layout_marginTop="255dp">
+
+        <RadioButton
+            android:id="@+id/radioEnglish"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="50dp"
+            android:checked="true"
+            android:text="English"
+            android:textSize="15sp"
+            />
+
+        <RadioButton
+            android:id="@+id/radioHindi"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="50dp"
+            android:textSize="15sp"
+            android:text="हिन्दी" />
+    </RadioGroup>
+
 </RelativeLayout>

@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="@color/colorBackground"
     tools:context=".TimerSetting">
+
 
     <TextView
         android:id="@+id/textView"
@@ -15,17 +17,18 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginRight="65dp"
-        android:layout_marginBottom="53dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="66dp"
+        android:layout_marginLeft="66dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginRight="63dp"
+        android:layout_marginBottom="38dp"
         android:fontFamily="font/tienne_black"
-        android:textSize="30sp"
         android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="@string/select_time" />
+        android:text="@string/select_time"
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/btnSubmit"
@@ -35,14 +38,14 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="60dp"
         android:layout_marginRight="60dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="148dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="@string/next" />
-
 
     <Button
         android:id="@+id/imageButton3"
@@ -52,10 +55,11 @@
         android:layout_above="@+id/imageButton2"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="59dp"
-        android:layout_marginRight="59dp"
-        android:layout_marginBottom="59dp"
+        android:layout_marginEnd="62dp"
+        android:layout_marginRight="62dp"
+        android:layout_marginBottom="39dp"
         android:background="@color/colorMorning"
         android:drawableLeft="@android:drawable/ic_menu_recent_history"
         android:gravity="center"
@@ -71,10 +75,11 @@
         android:layout_above="@+id/imageButton"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="60dp"
         android:layout_marginRight="60dp"
-        android:layout_marginBottom="58dp"
+        android:layout_marginBottom="39dp"
         android:background="@color/colorNoon"
         android:drawableLeft="@android:drawable/ic_menu_recent_history"
         android:gravity="center"
@@ -90,10 +95,11 @@
         android:layout_above="@+id/btnSubmit"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="59dp"
         android:layout_marginRight="59dp"
-        android:layout_marginBottom="57dp"
+        android:layout_marginBottom="68dp"
         android:background="@color/colorEvening"
         android:drawableLeft="@android:drawable/ic_menu_recent_history"
         android:gravity="center"

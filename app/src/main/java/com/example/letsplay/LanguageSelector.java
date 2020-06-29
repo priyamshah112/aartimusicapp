@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -18,7 +20,8 @@ import java.util.Locale;
 
 public class LanguageSelector extends AppCompatActivity {
 
-    private Spinner spinner1;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
     private Button btnSubmit;
     private String str;
     @Override
@@ -33,36 +36,37 @@ public class LanguageSelector extends AppCompatActivity {
         setContentView(R.layout.activity_language_selector);
 
         addListenerOnButton();
-        addListenerOnSpinnerItemSelection();
     }
 
 
-    public void addListenerOnSpinnerItemSelection() {
-        spinner1 = (Spinner) findViewById(R.id.spinner1);
-        spinner1.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-    }
 
     // get the selected dropdown list value
     public void addListenerOnButton() {
-        spinner1 = (Spinner) findViewById(R.id.spinner1);
+
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
         setLocale("en");
         btnSubmit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
-                str=(String) spinner1.getSelectedItem();
+                radioGroup = (RadioGroup) findViewById(R.id.radio);
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+                System.out.println("I am here in add listener");
+                System.out.println(selectedId);
+                radioButton = (RadioButton) findViewById(selectedId);
+                str=(String) radioButton.getText();
+                System.out.println("Printing string of radio Button");
+                System.out.println(str);
                 if (str.equals("English")){
                     setLocale("en");
                 }
-                else if(str.equals("Hindi")){
+                else if(str.equals("हिन्दी")){
                     setLocale("hi");
                 }
-//                the below statements are to be recommented once the error is resoled
+
                 Intent myIntent = new Intent(LanguageSelector.this,TimerSetting.class);
                 startActivity(myIntent);
-                myIntent.putExtra("language", String.valueOf(spinner1.getSelectedItem()));
+                myIntent.putExtra("language", (String)radioButton.getText());
                 }
             }
         );
