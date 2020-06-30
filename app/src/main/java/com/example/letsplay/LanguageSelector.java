@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.provider.Settings;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,16 +32,12 @@ public class LanguageSelector extends AppCompatActivity {
         prefs = getSharedPreferences(fileName, Context.MODE_PRIVATE);
         if(prefs.contains(language)){
             System.out.println("entered the tranistion"+prefs.getString(language,""));
-            Intent i = new Intent(LanguageSelector.this,MainActivity.class);
             String k=prefs.getString(language,"");
-            startActivity(i);
-            loadLocal(k);
-        }
-        //loadLocale();
 
-        //Change actionbar title, if u dont change it will be according to the system default
-        //ActionBar actionBar = getSupportActionBar();
-        //actionBar.setTitle(getResources().getString(R.string.app_name));
+            setLocale(k);
+            Intent i = new Intent(LanguageSelector.this,MainActivity.class);
+            startActivity(i);
+        }
 
         setContentView(R.layout.activity_language_selector);
 
@@ -56,7 +50,7 @@ public class LanguageSelector extends AppCompatActivity {
     public void addListenerOnButton() {
 
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
-        setLocale("en");
+        //setLocale("en");
         btnSubmit.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -91,7 +85,7 @@ public class LanguageSelector extends AppCompatActivity {
     private void setLocale(String lang){
         Log.w("changing the locale"+lang,"language change");
         Locale locale = new Locale(lang);
-        locale.setDefault(locale);
+        //locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
@@ -100,36 +94,5 @@ public class LanguageSelector extends AppCompatActivity {
         editor.putString("language",lang);
         editor.commit();
     }
-    public void loadLocale(){
-        System.out.println("entered the loader");
-        prefs = getSharedPreferences("filename",Activity.MODE_PRIVATE);
-        String language = prefs.getString("language","");
-        setLocale(language);
-        System.out.println(language);
-        if(language!=null){
-            if(language=="en") {
-                setLocale(language);
-            }else {
-                setLocale(language);
-            }
-            Intent i = new Intent(LanguageSelector.this,MainActivity.class);
-            startActivity(i);
-        }
-    }
-    public void loadLocal(String k){
-        System.out.println("entered the loader");
-        //prefs = getSharedPreferences("filename",Activity.MODE_PRIVATE);
-        //String language = prefs.getString("language","");
-        setLocale(k);
-        System.out.println(k);
-        //if(language!=null){
-        //    if(language=="en") {
-//                setLocale(language);
-//            }else {
-//                setLocale(language);
-//            }
-            Intent i = new Intent(LanguageSelector.this,MainActivity.class);
-            startActivity(i);
-        }
-    
+
 }

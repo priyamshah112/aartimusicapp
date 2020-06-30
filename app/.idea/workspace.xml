@@ -9,7 +9,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/example/letsplay/LanguageSelector.java" description="}" line="79" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/example/letsplay/LanguageSelector.java" description="}" line="73" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a193e757-89d9-46bc-bcf8-2d16f7374de6" name="Default Changelist" comment="">
@@ -85,13 +85,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/letsplay/LanguageSelector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="133" column="4" lean-forward="true" selection-start-line="133" selection-start-column="4" selection-end-line="133" selection-end-column="4" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_timer_setting.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -139,6 +146,8 @@
       <find>Log</find>
       <find>hi</find>
       <find>create</find>
+      <find>loadlocal</find>
+      <find>setlocal</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -159,7 +168,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/letsplay/CurrentPlayist.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/letsplay/Aarti.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/letsplay/SingleMusicPlayer.java" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/activity_timer_setting.xml" />
         <option value="$PROJECT_DIR$/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/src/main/res/values-hi/strings.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_language_selector.xml" />
@@ -173,6 +181,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/letsplay/AlertReceiver3.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/letsplay/AlertReceiver.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/letsplay/TimerSetting.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_timer_setting.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/letsplay/LanguageSelector.java" />
       </list>
     </option>
@@ -211,6 +220,17 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="letsplay" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aartimusicapp" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="aartimusicapp" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="aartimusicapp" type="1abcf292:AndroidViewProjectNode" />
@@ -349,21 +369,21 @@
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="1" />
-      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.2181208" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.2181208" />
       <window_info id="Structure" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Logcat" order="0" weight="0.34844193" />
+      <window_info anchor="bottom" id="Logcat" order="0" visible="true" weight="0.34844193" />
       <window_info anchor="bottom" id="TODO" order="1" weight="0.3286119" />
       <window_info anchor="bottom" id="Android Profiler" order="2" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info active="true" anchor="bottom" id="Build" order="7" visible="true" weight="0.31303117" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.31303117" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3286119" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3286119" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
@@ -408,7 +428,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/letsplay/LanguageSelector.java</url>
-          <line>23</line>
+          <line>21</line>
           <properties field="radioGroup" class="com.example.letsplay.LanguageSelector" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -530,14 +550,6 @@
             <element signature="e#837#862#0" expanded="true" />
             <element signature="e#1722#1747#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_timer_setting.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
@@ -698,13 +710,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_timer_setting.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/letsplay/LanguageSelector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="133" column="4" lean-forward="true" selection-start-line="133" selection-start-column="4" selection-end-line="133" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
