@@ -33,10 +33,11 @@ public class LanguageSelector extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         prefs = getSharedPreferences(fileName, Context.MODE_PRIVATE);
         if(prefs.contains(language)){
+            System.out.println("entered the tranistion"+prefs.getString(language,""));
             Intent i = new Intent(LanguageSelector.this,MainActivity.class);
-            prefs.getString(language,"");
+            String k=prefs.getString(language,"");
             startActivity(i);
-            loadLocale();
+            loadLocal(k);
         }
         //loadLocale();
 
@@ -95,13 +96,14 @@ public class LanguageSelector extends AppCompatActivity {
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
         //saved data to Shared preferences
-        //SharedPreferences.Editor editor = getSharedPreferences("Settings",MODE_PRIVATE).edit();
-        //editor.putString("My_Lang",lang);
-        //editor.apply();
+        SharedPreferences.Editor editor = getSharedPreferences("filename",MODE_PRIVATE).edit();
+        editor.putString("language",lang);
+        editor.commit();
     }
     public void loadLocale(){
-        prefs = getSharedPreferences("Settings",Activity.MODE_PRIVATE);
-        String language = prefs.getString("lang","");
+        System.out.println("entered the loader");
+        prefs = getSharedPreferences("filename",Activity.MODE_PRIVATE);
+        String language = prefs.getString("language","");
         setLocale(language);
         System.out.println(language);
         if(language!=null){
@@ -114,4 +116,20 @@ public class LanguageSelector extends AppCompatActivity {
             startActivity(i);
         }
     }
+    public void loadLocal(String k){
+        System.out.println("entered the loader");
+        //prefs = getSharedPreferences("filename",Activity.MODE_PRIVATE);
+        //String language = prefs.getString("language","");
+        setLocale(k);
+        System.out.println(k);
+        //if(language!=null){
+        //    if(language=="en") {
+//                setLocale(language);
+//            }else {
+//                setLocale(language);
+//            }
+            Intent i = new Intent(LanguageSelector.this,MainActivity.class);
+            startActivity(i);
+        }
+    
 }
