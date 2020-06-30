@@ -10,6 +10,7 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 public class NotificationHelper extends ContextWrapper {
     public static final String channelID = "channelID";
@@ -32,8 +33,12 @@ public class NotificationHelper extends ContextWrapper {
         }
         return mManager;
     }
-    public NotificationCompat.Builder getChannelNotification() {
-        Intent resultIntent = new Intent(this, MainActivity.class);
+    public NotificationCompat.Builder getChannelNotification(Integer k) {
+
+        //Log.w("got the id in notifi "+k,"finally got the message in the class");
+        Intent resultIntent = new Intent(this, SingleMusicPlayer.class);
+        String aString = Integer.toString(k);
+        resultIntent.putExtra("id",k);
         // Create the TaskStackBuilder and add the intent, which inflates the back stack
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addNextIntentWithParentStack(resultIntent);

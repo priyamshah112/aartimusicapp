@@ -14,13 +14,15 @@ import android.widget.TimePicker;
 
 import java.util.Calendar;
 
+import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
+
 public class TimerSetting extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener{
 
     private Button btnSubmit;
     private Button mgnSubmit;
     private Button aftSubmit;
     private Button eveSubmit;
-
+    public Integer var=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,7 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
             public void onClick(View v) {
                 DialogFragment timePicker = new TimePickerFragment();
                 timePicker.show(getSupportFragmentManager(), "time picker");
+                var=1;
             }
 
         });
@@ -73,6 +76,7 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
             public void onClick(View v) {
                 DialogFragment timePicker = new TimePickerFragment();
                 timePicker.show(getSupportFragmentManager(), "time picker");
+                var=2;
             }
 
         });
@@ -88,20 +92,25 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
 
                 DialogFragment timePicker = new TimePickerFragment();
                 timePicker.show(getSupportFragmentManager(), "time picker");
+                var=3;
             }
 
         });
     }
 
 
-    private void startAlarm(Calendar c) {
+    private void startAlarm(Calendar c,Integer getvar) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+        Bundle extras = new Bundle();
+        extras.putInt("arg_1", getvar);
+//        extras.putInt("arg_2", 2);
+        intent.putExtras(extras);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, FLAG_UPDATE_CURRENT);
         if (c.before(Calendar.getInstance())) {
             c.add(Calendar.DATE, 1);
         }
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
     }
 
     @Override
@@ -111,7 +120,7 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
         c.set(Calendar.MINUTE, minute);
         c.set(Calendar.SECOND, 0);
         //updateTimeText(c);
-        startAlarm(c);
+        startAlarm(c,var);
     }
 }
 
