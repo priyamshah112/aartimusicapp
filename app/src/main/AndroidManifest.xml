@@ -26,6 +26,8 @@
         </activity>
 
         <receiver android:name=".AlertReceiver" />
+        <receiver android:name=".AlertReceiver2" />
+        <receiver android:name=".AlertReceiver3" />
     </application>
 
 </manifest>
