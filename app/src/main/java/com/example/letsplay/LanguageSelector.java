@@ -26,16 +26,17 @@ public class LanguageSelector extends AppCompatActivity {
     private Button btnSubmit;
     private String str;
     SharedPreferences prefs;
-    //public static final String fileName = "login";
-
-    //public static final String language = "login";
+    public static final String fileName = "login";
+    public static final String language = "lang";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //sharedPrefeerences = getSharedPreferences(fileName, Context.MODE_PRIVATE);
+        prefs = getSharedPreferences(fileName, Context.MODE_PRIVATE);
         if(prefs.contains(language)){
             Intent i = new Intent(LanguageSelector.this,MainActivity.class);
+            prefs.getString(language,"");
             startActivity(i);
+            loadLocale();
         }
         //loadLocale();
 
@@ -76,8 +77,9 @@ public class LanguageSelector extends AppCompatActivity {
                     setLocale("hi");
                     lang="hi";
                 }
-                //SharedPreferences.Editor editor = sharedPrefeerences.edit();
-                //editor.putString(language,lang)
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString(language,lang);
+                editor.commit();
                 Intent myIntent = new Intent(LanguageSelector.this,TimerSetting.class);
                 startActivity(myIntent);
                 myIntent.putExtra("language", (String)radioButton.getText());
@@ -93,13 +95,13 @@ public class LanguageSelector extends AppCompatActivity {
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
         //saved data to Shared preferences
-        SharedPreferences.Editor editor = getSharedPreferences("Settings",MODE_PRIVATE).edit();
-        editor.putString("My_Lang",lang);
-        editor.apply();
+        //SharedPreferences.Editor editor = getSharedPreferences("Settings",MODE_PRIVATE).edit();
+        //editor.putString("My_Lang",lang);
+        //editor.apply();
     }
     public void loadLocale(){
         prefs = getSharedPreferences("Settings",Activity.MODE_PRIVATE);
-        String language = prefs.getString("My_Lang","");
+        String language = prefs.getString("lang","");
         setLocale(language);
         System.out.println(language);
         if(language!=null){
