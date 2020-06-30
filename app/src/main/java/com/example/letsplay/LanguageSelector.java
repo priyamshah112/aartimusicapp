@@ -1,6 +1,7 @@
 package com.example.letsplay;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -24,10 +25,19 @@ public class LanguageSelector extends AppCompatActivity {
     private RadioButton radioButton;
     private Button btnSubmit;
     private String str;
+    SharedPreferences prefs;
+    //public static final String fileName = "login";
+
+    //public static final String language = "login";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadLocale();
+        //sharedPrefeerences = getSharedPreferences(fileName, Context.MODE_PRIVATE);
+        if(prefs.contains(language)){
+            Intent i = new Intent(LanguageSelector.this,MainActivity.class);
+            startActivity(i);
+        }
+        //loadLocale();
 
         //Change actionbar title, if u dont change it will be according to the system default
         //ActionBar actionBar = getSupportActionBar();
@@ -49,6 +59,7 @@ public class LanguageSelector extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                String lang=null;
                 radioGroup = (RadioGroup) findViewById(R.id.radio);
                 int selectedId = radioGroup.getCheckedRadioButtonId();
                 System.out.println("I am here in add listener");
@@ -59,11 +70,14 @@ public class LanguageSelector extends AppCompatActivity {
                 System.out.println(str);
                 if (str.equals("English")){
                     setLocale("en");
+                    lang="en";
                 }
                 else if(str.equals("हिन्दी")){
                     setLocale("hi");
+                    lang="hi";
                 }
-
+                //SharedPreferences.Editor editor = sharedPrefeerences.edit();
+                //editor.putString(language,lang)
                 Intent myIntent = new Intent(LanguageSelector.this,TimerSetting.class);
                 startActivity(myIntent);
                 myIntent.putExtra("language", (String)radioButton.getText());
@@ -84,8 +98,18 @@ public class LanguageSelector extends AppCompatActivity {
         editor.apply();
     }
     public void loadLocale(){
-        SharedPreferences prefs = getSharedPreferences("Settings",Activity.MODE_PRIVATE);
+        prefs = getSharedPreferences("Settings",Activity.MODE_PRIVATE);
         String language = prefs.getString("My_Lang","");
         setLocale(language);
+        System.out.println(language);
+        if(language!=null){
+            if(language=="en") {
+                setLocale(language);
+            }else {
+                setLocale(language);
+            }
+            Intent i = new Intent(LanguageSelector.this,MainActivity.class);
+            startActivity(i);
+        }
     }
 }

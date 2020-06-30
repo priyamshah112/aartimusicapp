@@ -9,11 +9,11 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/example/letsplay/LanguageSelector.java" description="}" line="64" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/example/letsplay/LanguageSelector.java" description="}" line="77" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a193e757-89d9-46bc-bcf8-2d16f7374de6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/letsplay/TimerSetting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/letsplay/TimerSetting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/letsplay/LanguageSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/letsplay/LanguageSelector.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,9 +83,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/letsplay/LanguageSelector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/letsplay/TimerSetting.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6">
+            <state relative-caret-position="312">
               <caret line="122" column="40" lean-forward="true" selection-start-line="122" selection-start-column="40" selection-end-line="122" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -151,7 +163,6 @@
         <option value="$PROJECT_DIR$/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/src/main/res/values-hi/strings.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_language_selector.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/letsplay/LanguageSelector.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/letsplay/SplashScreen.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/letsplay/AlerReceiver2.java" />
         <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
@@ -162,6 +173,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/letsplay/AlertReceiver3.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/letsplay/AlertReceiver.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/letsplay/TimerSetting.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/letsplay/LanguageSelector.java" />
       </list>
     </option>
   </component>
@@ -333,6 +345,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="2" y="-7" width="995" height="831" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="1" />
@@ -350,7 +363,7 @@
       <window_info anchor="bottom" id="Run" order="4" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.32719547" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.32618025" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3286119" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3286119" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
@@ -395,7 +408,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/letsplay/LanguageSelector.java</url>
-          <line>22</line>
+          <line>23</line>
           <properties field="radioGroup" class="com.example.letsplay.LanguageSelector" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -570,18 +583,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/letsplay/LanguageSelector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="90" column="1" lean-forward="true" selection-start-line="90" selection-start-column="1" selection-end-line="90" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1418#2438#0" expanded="true" />
-            <element signature="e#2437#2438#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/letsplay/CurrentPlayist.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
@@ -689,8 +690,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/letsplay/TimerSetting.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6">
+        <state relative-caret-position="312">
           <caret line="122" column="40" lean-forward="true" selection-start-line="122" selection-start-column="40" selection-end-line="122" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/letsplay/LanguageSelector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
