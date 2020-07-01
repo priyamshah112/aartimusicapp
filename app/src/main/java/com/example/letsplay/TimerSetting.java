@@ -101,18 +101,43 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
 
     private void startAlarm(Calendar c,Integer getvar) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, AlertReceiver.class);
-        Bundle extras = new Bundle();
-        extras.putInt("arg_1", getvar);
+        if (getvar == 1) {
+            Intent intent = new Intent(this, AlertReceiver.class);
+            Bundle extras = new Bundle();
+            extras.putInt("arg_1", getvar);
 //        extras.putInt("arg_2", 2);
-        intent.putExtras(extras);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, FLAG_UPDATE_CURRENT);
-        if (c.before(Calendar.getInstance())) {
-            c.add(Calendar.DATE, 1);
-        }
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-    }
+            intent.putExtras(extras);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, FLAG_UPDATE_CURRENT);
+            if (c.before(Calendar.getInstance())) {
+                c.add(Calendar.DATE, 1);
+            }
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        } else if (getvar == 2) {
+            Intent intent = new Intent(this, AlertReceiver2.class);
+            Bundle extras = new Bundle();
+            extras.putInt("arg_1", getvar);
+//        extras.putInt("arg_2", 2);
+            intent.putExtras(extras);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, FLAG_UPDATE_CURRENT);
+            if (c.before(Calendar.getInstance())) {
+                c.add(Calendar.DATE, 1);
+            }
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
 
+        } else if (getvar == 3) {
+            Intent intent = new Intent(this, AlertReceiver3.class);
+            Bundle extras = new Bundle();
+            extras.putInt("arg_1", getvar);
+//        extras.putInt("arg_2", 2);
+            intent.putExtras(extras);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, FLAG_UPDATE_CURRENT);
+            if (c.before(Calendar.getInstance())) {
+                c.add(Calendar.DATE, 1);
+            }
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+
+        }
+    }
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         Calendar c = Calendar.getInstance();
