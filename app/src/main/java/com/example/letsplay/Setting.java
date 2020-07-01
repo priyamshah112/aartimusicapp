@@ -32,6 +32,7 @@ public class Setting extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(Setting.this,LanguageSelector.class);
+                myIntent.putExtra("id",1);
                 startActivity(myIntent);
             }
 
