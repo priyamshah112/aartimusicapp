@@ -30,18 +30,27 @@ public class LanguageSelector extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         prefs = getSharedPreferences(fileName, Context.MODE_PRIVATE);
-        if(prefs.contains(language)){
-            System.out.println("entered the tranistion"+prefs.getString(language,""));
-            String k=prefs.getString(language,"");
+        Intent sourceIntent = getIntent();
+        if(sourceIntent == null)
+        {
+            if(prefs.contains(language)){
+                System.out.println("entered the tranistion"+prefs.getString(language,""));
+                String k=prefs.getString(language,"");
 
-            setLocale(k);
-            Intent i = new Intent(LanguageSelector.this,MainActivity.class);
-            startActivity(i);
+                setLocale(k);
+                Intent i = new Intent(LanguageSelector.this,MainActivity.class);
+                startActivity(i);
+            }
+
+            setContentView(R.layout.activity_language_selector);
+
+            addListenerOnButton();
+        }else{
+            setContentView(R.layout.activity_language_selector);
+
+            addListenerOnButton();
         }
 
-        setContentView(R.layout.activity_language_selector);
-
-        addListenerOnButton();
     }
 
 
