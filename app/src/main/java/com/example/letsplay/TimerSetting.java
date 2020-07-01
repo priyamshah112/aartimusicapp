@@ -147,6 +147,7 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
         //updateTimeText(c);
         startAlarm(c,var);
     }
+
 }
 
 
