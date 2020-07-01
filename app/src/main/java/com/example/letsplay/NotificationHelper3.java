@@ -9,7 +9,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Build;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 
 public class NotificationHelper3 extends ContextWrapper {
     public static final String channelID = "evening aarti time";
