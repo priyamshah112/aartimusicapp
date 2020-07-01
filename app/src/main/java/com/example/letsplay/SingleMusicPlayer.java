@@ -21,8 +21,8 @@ import android.widget.TextView;
 public class SingleMusicPlayer extends AppCompatActivity {
     SeekBar mSeekBar;
     TextView songTitle;
-    static MediaPlayer sMediaPlayer;
-    //sMediaPlayer = Global.sMediaPlayer;
+    //static MediaPlayer sMediaPlayer;
+    MediaPlayer sMediaPlayer = Global.sMediaPlayer;
     int position;
     TextView curTime;
     TextView totTime;

@@ -1,6 +1,7 @@
 package com.example.letsplay;
 import android.content.Intent;
 import android.media.Image;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
@@ -78,7 +79,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
+        System.out.println("Back pressed");
+        if(Global.sMediaPlayer.isPlaying()){
+            System.out.println("playing aarti stop");
+            Global.sMediaPlayer.stop();
+        }
+        
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addCategory(Intent.CATEGORY_HOME);

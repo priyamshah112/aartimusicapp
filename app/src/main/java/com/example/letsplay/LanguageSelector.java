@@ -104,5 +104,4 @@ public class LanguageSelector extends AppCompatActivity {
         editor.commit();
     }
 
-
 }
