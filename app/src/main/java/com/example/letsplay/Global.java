@@ -4,4 +4,5 @@ import android.media.MediaPlayer;
 
 public class Global {
     public static MediaPlayer sMediaPlayer;
+    public static MediaPlayer mMediaPlayer;
 }

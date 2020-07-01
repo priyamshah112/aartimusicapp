@@ -24,7 +24,7 @@ public class Player extends AppCompatActivity {
     SeekBar vSeekBar;
     TextView songTitle;
     ArrayList<File> allSongs;
-    static MediaPlayer mMediaPlayer;
+
     int position;
     TextView curTime;
     TextView totTime;
@@ -53,10 +53,8 @@ public class Player extends AppCompatActivity {
 
         audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
 
-
-
-        if (mMediaPlayer != null) {
-            mMediaPlayer.stop();
+        if (Global.mMediaPlayer != null) {
+            Global.mMediaPlayer.stop();
         }
 
         playerData = getIntent();
@@ -107,28 +105,39 @@ public class Player extends AppCompatActivity {
 
     private void initPlayer(final int position) {
 
-        if (mMediaPlayer != null && mMediaPlayer.isPlaying()) {
-            mMediaPlayer.reset();
+        //stop aarti player
+        try{
+            if (Global.sMediaPlayer.isPlaying()) {
+                System.out.println("playing aarti stop from Library");
+                Global.sMediaPlayer.stop();
+            }
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+
+        if (Global.mMediaPlayer != null && Global.mMediaPlayer.isPlaying()) {
+            Global.mMediaPlayer.reset();
         }
 
         String sname = allSongs.get(position).getName().replace(".mp3", "").replace(".m4a", "").replace(".wav", "").replace(".m4b", "");
         songTitle.setText(sname);
         Uri songResourceUri = Uri.parse(allSongs.get(position).toString());
 
-        mMediaPlayer = MediaPlayer.create(getApplicationContext(), songResourceUri); // create and load mediaplayer with song resources
-        mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+        Global.mMediaPlayer = MediaPlayer.create(getApplicationContext(), songResourceUri); // create and load mediaplayer with song resources
+        Global.mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-                String totalTime = createTimeLabel(mMediaPlayer.getDuration());
+                String totalTime = createTimeLabel(Global.mMediaPlayer.getDuration());
                 totTime.setText(totalTime);
-                mSeekBar.setMax(mMediaPlayer.getDuration());
-                mMediaPlayer.start();
+                mSeekBar.setMax(Global.mMediaPlayer.getDuration());
+                Global.mMediaPlayer.start();
                 playIcon.setImageResource(R.drawable.ic_pause_black_24dp);
 
             }
         });
 
-        mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+        Global.mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 int curSongPoition = position;
@@ -172,7 +181,7 @@ public class Player extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
                 if (fromUser) {
-                    mMediaPlayer.seekTo(progress);
+                    Global.mMediaPlayer.seekTo(progress);
                     mSeekBar.setProgress(progress);
                 }
 
@@ -193,13 +202,13 @@ public class Player extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (mMediaPlayer != null) {
+                while (Global.mMediaPlayer != null) {
                     try {
 //                        Log.i("Thread ", "Thread Called");
                         // create new message to send to handler
-                        if (mMediaPlayer.isPlaying()) {
+                        if (Global.mMediaPlayer.isPlaying()) {
                             Message msg = new Message();
-                            msg.what = mMediaPlayer.getCurrentPosition();
+                            msg.what = Global.mMediaPlayer.getCurrentPosition();
                             handler.sendMessage(msg);
                             Thread.sleep(1000);
                         }
@@ -226,8 +235,8 @@ public class Player extends AppCompatActivity {
 
     private void play() {
 
-        if (mMediaPlayer != null && !mMediaPlayer.isPlaying()) {
-            mMediaPlayer.start();
+        if (Global.mMediaPlayer != null && !Global.mMediaPlayer.isPlaying()) {
+            Global.mMediaPlayer.start();
             playIcon.setImageResource(R.drawable.ic_pause_black_24dp);
         } else {
             pause();
@@ -236,8 +245,8 @@ public class Player extends AppCompatActivity {
     }
 
     private void pause() {
-        if (mMediaPlayer.isPlaying()) {
-            mMediaPlayer.pause();
+        if (Global.mMediaPlayer.isPlaying()) {
+            Global.mMediaPlayer.pause();
             playIcon.setImageResource(R.drawable.ic_play_arrow_black_24dp);
 
         }

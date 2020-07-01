@@ -79,17 +79,32 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        System.out.println("Back pressed");
-//        if(Global.sMediaPlayer.isPlaying()){
-//            System.out.println("playing aarti stop");
-//            Global.sMediaPlayer.stop();
-//        }
+        try {
+            System.out.println("Back pressed");
+            if (Global.sMediaPlayer.isPlaying()) {
+                System.out.println("playing aarti stop");
+                Global.sMediaPlayer.stop();
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Aarti Player Null Object");
+        }
 
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        try {
+            if (Global.mMediaPlayer.isPlaying()) {
+                System.out.println("playing library stop");
+                Global.mMediaPlayer.stop();
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Media Player Null Object");
+        }
+
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
 
     }
 
