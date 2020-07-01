@@ -45,8 +45,8 @@ public class NotificationHelper2 extends ContextWrapper {
         PendingIntent resultPendingIntent =
                 stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
-                .setContentTitle("afetrnoon")
-                .setContentText("It's Aarti time.")
+                .setContentTitle("Afternoon Aarti")
+                .setContentText("It's Afternoon Aarti time.Click to listen Aarti.")
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentIntent(resultPendingIntent);
     }
