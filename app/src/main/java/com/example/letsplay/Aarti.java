@@ -108,4 +108,5 @@ public class Aarti extends Fragment implements View.OnClickListener {
         eveningbutton = (Button) view.findViewById(R.id.EveningBtn);
 
     }
+
 }
