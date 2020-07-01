@@ -30,27 +30,18 @@ public class LanguageSelector extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         prefs = getSharedPreferences(fileName, Context.MODE_PRIVATE);
-        Intent sourceIntent = getIntent();
-        if(sourceIntent == null)
-        {
-            if(prefs.contains(language)){
-                System.out.println("entered the tranistion"+prefs.getString(language,""));
-                String k=prefs.getString(language,"");
+        if(prefs.contains(language)){
+            System.out.println("entered the tranistion"+prefs.getString(language,""));
+            String k=prefs.getString(language,"");
 
-                setLocale(k);
-                Intent i = new Intent(LanguageSelector.this,MainActivity.class);
-                startActivity(i);
-            }
-
-            setContentView(R.layout.activity_language_selector);
-
-            addListenerOnButton();
-        }else{
-            setContentView(R.layout.activity_language_selector);
-
-            addListenerOnButton();
+            setLocale(k);
+            Intent i = new Intent(LanguageSelector.this,MainActivity.class);
+            startActivity(i);
         }
 
+        setContentView(R.layout.activity_language_selector);
+
+        addListenerOnButton();
     }
 
 
@@ -62,33 +53,33 @@ public class LanguageSelector extends AppCompatActivity {
         //setLocale("en");
         btnSubmit.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                String lang=null;
-                radioGroup = (RadioGroup) findViewById(R.id.radio);
-                int selectedId = radioGroup.getCheckedRadioButtonId();
-                System.out.println("I am here in add listener");
-                System.out.println(selectedId);
-                radioButton = (RadioButton) findViewById(selectedId);
-                str=(String) radioButton.getText();
-                System.out.println("Printing string of radio Button");
-                System.out.println(str);
-                if (str.equals("English")){
-                    setLocale("en");
-                    lang="en";
-                }
-                else if(str.equals("हिन्दी")){
-                    setLocale("hi");
-                    lang="hi";
-                }
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString(language,lang);
-                editor.commit();
-                Intent myIntent = new Intent(LanguageSelector.this,TimerSetting.class);
-                startActivity(myIntent);
-                myIntent.putExtra("language", (String)radioButton.getText());
-                }
-            }
+                                         @Override
+                                         public void onClick(View v) {
+                                             String lang=null;
+                                             radioGroup = (RadioGroup) findViewById(R.id.radio);
+                                             int selectedId = radioGroup.getCheckedRadioButtonId();
+                                             System.out.println("I am here in add listener");
+                                             System.out.println(selectedId);
+                                             radioButton = (RadioButton) findViewById(selectedId);
+                                             str=(String) radioButton.getText();
+                                             System.out.println("Printing string of radio Button");
+                                             System.out.println(str);
+                                             if (str.equals("English")){
+                                                 setLocale("en");
+                                                 lang="en";
+                                             }
+                                             else if(str.equals("हिन्दी")){
+                                                 setLocale("hi");
+                                                 lang="hi";
+                                             }
+                                             SharedPreferences.Editor editor = prefs.edit();
+                                             editor.putString(language,lang);
+                                             editor.commit();
+                                             Intent myIntent = new Intent(LanguageSelector.this,TimerSetting.class);
+                                             startActivity(myIntent);
+                                             myIntent.putExtra("language", (String)radioButton.getText());
+                                         }
+                                     }
         );
     }
     private void setLocale(String lang){
