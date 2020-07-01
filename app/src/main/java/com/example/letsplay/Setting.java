@@ -1,6 +1,8 @@
 package com.example.letsplay;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -25,12 +27,18 @@ public class Setting extends AppCompatActivity {
     }
     public void addListenerOnButtonBtn1() {
 
+
         btnSubmit1 = (Button) findViewById(R.id.btnSubmit);
 
         btnSubmit1.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                SharedPreferences preferences =getSharedPreferences("login", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.apply();
+                finish();
                 Intent myIntent = new Intent(Setting.this,LanguageSelector.class);
                 myIntent.putExtra("id",1);
                 startActivity(myIntent);
