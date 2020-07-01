@@ -21,8 +21,7 @@ import android.widget.TextView;
 public class SingleMusicPlayer extends AppCompatActivity {
     SeekBar mSeekBar;
     TextView songTitle;
-    //static MediaPlayer sMediaPlayer;
-    MediaPlayer sMediaPlayer = Global.sMediaPlayer;
+    //static MediaPlayer Global.sMediaPlayer;
     int position;
     TextView curTime;
     TextView totTime;
@@ -53,8 +52,8 @@ public class SingleMusicPlayer extends AppCompatActivity {
 
 
 
-        if (sMediaPlayer != null) {
-            sMediaPlayer.stop();
+        if (Global.sMediaPlayer != null) {
+            Global.sMediaPlayer.stop();
         }
 
         playerData = getIntent();
@@ -77,29 +76,42 @@ public class SingleMusicPlayer extends AppCompatActivity {
 
     private void initPlayer() {
 
-        if (sMediaPlayer != null && sMediaPlayer.isPlaying()) {
-            sMediaPlayer.reset();
+        //stop mMediaPlayer
+
+        try{
+
+            if (Global.mMediaPlayer.isPlaying()) {
+                System.out.println("playing library stop from Aarti Player");
+                Global.mMediaPlayer.stop();
+            }
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+
+        if (Global.sMediaPlayer != null && Global.sMediaPlayer.isPlaying()) {
+            Global.sMediaPlayer.reset();
         }
 
         if(bundle.getInt("id")==1){
             songTitle.setText("Morning");
-            sMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.morning); // create and load mediaplayer with song resources
+            Global.sMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.morning); // create and load mediaplayer with song resources
         }
         if(bundle.getInt("id")==2){
             songTitle.setText("Noon");
-            sMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.afternoon); // create and load mediaplayer with song resources
+            Global.sMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.afternoon); // create and load mediaplayer with song resources
         }
         if(bundle.getInt("id")==3){
             songTitle.setText("Evening");
-            sMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.evening); // create and load mediaplayer with song resources
+            Global.sMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.evening); // create and load mediaplayer with song resources
         }
-        sMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+        Global.sMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-                String totalTime = createTimeLabel(sMediaPlayer.getDuration());
+                String totalTime = createTimeLabel(Global.sMediaPlayer.getDuration());
                 totTime.setText(totalTime);
-                mSeekBar.setMax(sMediaPlayer.getDuration());
-                sMediaPlayer.start();
+                mSeekBar.setMax(Global.sMediaPlayer.getDuration());
+                Global.sMediaPlayer.start();
                 playIcon.setImageResource(R.drawable.ic_pause_black_24dp);
 
             }
@@ -132,7 +144,7 @@ public class SingleMusicPlayer extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
                 if (fromUser) {
-                    sMediaPlayer.seekTo(progress);
+                    Global.sMediaPlayer.seekTo(progress);
                     mSeekBar.setProgress(progress);
                 }
 
@@ -152,13 +164,13 @@ public class SingleMusicPlayer extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (sMediaPlayer != null) {
+                while (Global.sMediaPlayer != null) {
                     try {
 //                        Log.i("Thread ", "Thread Called");
                         // create new message to send to handler
-                        if (sMediaPlayer.isPlaying()) {
+                        if (Global.sMediaPlayer.isPlaying()) {
                             Message msg = new Message();
-                            msg.what = sMediaPlayer.getCurrentPosition();
+                            msg.what = Global.sMediaPlayer.getCurrentPosition();
                             handler.sendMessage(msg);
                             Thread.sleep(1000);
                         }
@@ -184,8 +196,8 @@ public class SingleMusicPlayer extends AppCompatActivity {
 
     private void play() {
 
-        if (sMediaPlayer != null && !sMediaPlayer.isPlaying()) {
-            sMediaPlayer.start();
+        if (Global.sMediaPlayer != null && !Global.sMediaPlayer.isPlaying()) {
+            Global.sMediaPlayer.start();
             playIcon.setImageResource(R.drawable.ic_pause_black_24dp);
         } else {
             pause();
@@ -194,8 +206,8 @@ public class SingleMusicPlayer extends AppCompatActivity {
     }
 
     private void pause() {
-        if (sMediaPlayer.isPlaying()) {
-            sMediaPlayer.pause();
+        if (Global.sMediaPlayer.isPlaying()) {
+            Global.sMediaPlayer.pause();
             playIcon.setImageResource(R.drawable.ic_play_arrow_black_24dp);
 
         }

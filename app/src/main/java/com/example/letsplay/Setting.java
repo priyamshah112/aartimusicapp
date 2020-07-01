@@ -19,7 +19,7 @@ public class Setting extends AppCompatActivity {
         mToolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle(getString(R.string.settings));
+        getSupportActionBar().setTitle(getString(R.string.app_name));
         addListenerOnButtonBtn1();
         addListenerOnButtonBtn2();
     }
