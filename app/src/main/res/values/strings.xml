@@ -5,7 +5,6 @@
 
     <string name="select_time">Select Aarti Notification Time</string>
     <string name="language_prompt">Select a language</string>
-    <string name="settings">Select a language</string>
 
     <string-array name="language_array">
         <item>English</item>
