@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -22,4 +24,11 @@ public class SplashScreen extends AppCompatActivity {
             }
         },SPLASH_TIME_OUT);
     }
+
+//    public void QuitApp() {
+//        finish();
+//        android.os.Process.killProcess(android.os.Process.myPid());
+//        System.exit(1);
+//        Toast.makeText(getApplicationContext(), "Closed Completely and Safely", Toast.LENGTH_LONG).show();
+//    }
 }

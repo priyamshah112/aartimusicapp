@@ -1,14 +1,16 @@
 package com.example.letsplay;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    Toolbar mToolbar;
+    //Toolbar mToolbar;
     PagerAdapter mPagerAdapter;
     TabLayout mTabLayout;
     TabItem libraryTabItem;
@@ -17,12 +19,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mToolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
+        //mToolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(mToolbar);
 //        getSupportActionBar().setTitle(getString(R.string.app_name));
 
         mTabLayout = findViewById(R.id.tabLayout);
@@ -64,4 +67,10 @@ public class MainActivity extends AppCompatActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
     }
+//
+//    @Override
+//    public void onBackPressed() {
+//        SplashScreen mActivity = new SplashScreen();//make sure that you pass the appropriate arguments if you have an args constructor
+//        mActivity.QuitApp();
+//    }
 }
