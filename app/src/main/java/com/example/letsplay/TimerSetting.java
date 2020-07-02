@@ -12,6 +12,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TimePicker;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import java.util.Calendar;
 
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
@@ -23,12 +30,22 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
     private Button aftSubmit;
     private Button eveSubmit;
     public Integer var=null;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer_setting);
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
 
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        //adView.setAdUnitId("ca-app-pub-3940256099942544~3347511713");
         addListenerOnButtonBtn();
         addListenerOnButtonMgn();
         addListenerOnButtonEve();
