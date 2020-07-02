@@ -44,6 +44,7 @@ public class SingleMusicPlayer extends AppCompatActivity {
     AudioManager audioManager;
     String MyAdUnitId;
     InterstitialAd mInterstitialAd;
+    Integer flagGetAdmobId=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,10 +59,15 @@ public class SingleMusicPlayer extends AppCompatActivity {
             @Override
             public void onDataChange(com.firebase.client.DataSnapshot dataSnapshot) {
                 MyAdUnitId = dataSnapshot.getValue(String.class);
-
-                mInterstitialAd.setAdUnitId(MyAdUnitId);
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
-                //mInterstitialAd.show();
+                if(MyAdUnitId==null){
+                    flagGetAdmobId=1;
+                }
+                else {
+                    Log.w("got this as the id " + MyAdUnitId, "trying to catch the string");
+                    mInterstitialAd.setAdUnitId(MyAdUnitId);
+                    mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                    //mInterstitialAd.show();
+                }
             }
 
             @Override
@@ -100,15 +106,17 @@ public class SingleMusicPlayer extends AppCompatActivity {
         playIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AdRequest adRequest = new AdRequest.Builder().build();
-                mInterstitialAd.loadAd(adRequest);
+                if(flagGetAdmobId==0) {
+                    AdRequest adRequest = new AdRequest.Builder().build();
 
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
-                } else {
-                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                    mInterstitialAd.loadAd(adRequest);
+
+                    if (mInterstitialAd.isLoaded()) {
+                        mInterstitialAd.show();
+                    } else {
+                        Log.d("TAG", "The interstitial wasn't loaded yet.");
+                    }
                 }
-
                 play();
             }
         });
