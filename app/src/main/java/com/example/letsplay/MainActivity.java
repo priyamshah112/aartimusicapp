@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton setting;
     private FirebaseRemoteConfig mFirebaseRemoteConfig;
 
-    private AdView mAdView;
+    private AdView mmAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,9 +129,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequestt = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequestt);
+        mmAdView = findViewById(R.id.adView);
+        AdRequest aadRequestt = new AdRequest.Builder().build();
+        mmAdView.loadAd(aadRequestt);
     }
 
     private void showTheDialog(final String appPackageName, String versionFromRemoteConfig){
