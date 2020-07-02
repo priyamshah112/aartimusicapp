@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Firebase.setAndroidContext(this);
-        Firebase myFirebase = new Firebase("https://bhajan-d2833.firebaseio.com/admob");
+        Firebase myFirebase = new Firebase("https://bhajan-d2833.firebaseio.com/admob1");
         myFirebase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(com.firebase.client.DataSnapshot dataSnapshot) {
@@ -143,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.w("gt the id "+MyAdUnitId1,"captured the id in main acrtivuty");
                 if(MyAdUnitId1!=null) {
                     mmAdView = findViewById(R.id.adView);
+                    mmAdView.setAdUnitId(MyAdUnitId1);
                     AdRequest aadRequestt = new AdRequest.Builder().build();
                     mmAdView.loadAd(aadRequestt);
                 }
