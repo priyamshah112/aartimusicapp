@@ -69,6 +69,7 @@
         android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
+        android:textColor="#000000"
         android:text="@string/select_mrng_aarti_time" />
 
     <Button
@@ -91,6 +92,7 @@
         android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
+        android:textColor="#000000"
         android:text="@string/select_noon_aarti_time" />
 
     <Button
