@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     ViewPager mViewPager;
     ImageButton setting;
     private FirebaseRemoteConfig mFirebaseRemoteConfig;
-
+//    private AdView mAdView;
     private AdView mmAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mmAdView = findViewById(R.id.adView);
+        //adView.setAdUnitId("ca-app-pub-3940256099942544~3347511713");
         AdRequest aadRequestt = new AdRequest.Builder().build();
         mmAdView.loadAd(aadRequestt);
     }

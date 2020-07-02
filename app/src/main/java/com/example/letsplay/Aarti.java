@@ -28,8 +28,8 @@ public class Aarti extends Fragment implements View.OnClickListener {
     Button mrngbutton;
     Button noonbutton;
     Button eveningbutton;
-    //Context thiscontext;
-    private AdView mAdView;
+//    //Context thiscontext;
+//    private AdView mAdView;
     int[] allSongs = {R.raw.morning,R.raw.afternoon,R.raw.evening};
     public Aarti() {
         // Required empty public constructor
@@ -40,7 +40,7 @@ public class Aarti extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //thiscontext = container.getContext();
+
         System.out.println("Inflating Aarti Fragment here");
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_aarti, container, false);
@@ -54,9 +54,6 @@ public class Aarti extends Fragment implements View.OnClickListener {
 
         eveningbutton = (Button) v.findViewById(R.id.EveningBtn);
         eveningbutton.setOnClickListener(this);
-        mAdView = v.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
         return v;
     }
 
