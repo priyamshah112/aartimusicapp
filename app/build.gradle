@@ -42,6 +42,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation 'com.karumi:dexter:5.0.0'
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
+<<<<<<< HEAD
     implementation 'androidx.multidex:multidex:2.0.1'
+=======
+    implementation 'com.google.firebase:firebase-config:19.1.4'
+>>>>>>> a2e0eb7d996fbb4a4b7258d09060118e7241fecc
 }
 apply plugin: 'com.google.gms.google-services'
