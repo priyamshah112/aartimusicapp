@@ -47,20 +47,18 @@ public class LanguageSelector extends AppCompatActivity {
     public void addListenerOnButton() {
 
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
-        //setLocale("en");
         btnSubmit.setOnClickListener(new View.OnClickListener() {
 
                                          @Override
                                          public void onClick(View v) {
+
                                              String lang=null;
+
                                              radioGroup = (RadioGroup) findViewById(R.id.radio);
                                              int selectedId = radioGroup.getCheckedRadioButtonId();
-                                             System.out.println("I am here in add listener");
-                                             System.out.println(selectedId);
                                              radioButton = (RadioButton) findViewById(selectedId);
                                              str=(String) radioButton.getText();
-                                             System.out.println("Printing string of radio Button");
-                                             System.out.println(str);
+
                                              if (str.equals("English")){
                                                  setLocale("en");
                                                  lang="en";
@@ -69,9 +67,11 @@ public class LanguageSelector extends AppCompatActivity {
                                                  setLocale("hi");
                                                  lang="hi";
                                              }
+
                                              SharedPreferences.Editor editor = prefs.edit();
                                              editor.putString(language,lang);
                                              editor.commit();
+
                                              Intent myIntent = new Intent(LanguageSelector.this,TimerSetting.class);
                                              startActivity(myIntent);
                                              myIntent.putExtra("language", (String)radioButton.getText());
@@ -80,12 +80,13 @@ public class LanguageSelector extends AppCompatActivity {
         );
     }
     private void setLocale(String lang){
-        Log.w("changing the locale"+lang,"language change");
         Locale locale = new Locale(lang);
+
         //locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
+
         //saved data to Shared preferences
         SharedPreferences.Editor editor = getSharedPreferences("filename",MODE_PRIVATE).edit();
         editor.putString("language",lang);

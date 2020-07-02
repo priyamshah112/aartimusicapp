@@ -33,8 +33,6 @@ import com.google.firebase.database.DatabaseError;
 public class SingleMusicPlayer extends AppCompatActivity {
     SeekBar mSeekBar;
     TextView songTitle;
-    //static MediaPlayer Global.sMediaPlayer;
-    int position;
     TextView curTime;
     TextView totTime;
     ImageView playIcon;
@@ -95,7 +93,6 @@ public class SingleMusicPlayer extends AppCompatActivity {
         playerData = getIntent();
         bundle = playerData.getExtras();
 
-        //position = bundle.getInt("position", 0);
         initPlayer();
 
 

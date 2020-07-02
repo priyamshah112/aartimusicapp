@@ -34,16 +34,18 @@ public class NotificationHelper2 extends ContextWrapper {
     }
     public NotificationCompat.Builder getChannelNotification(Integer k) {
 
-        //Log.w("got the id in notifi "+k,"finally got the message in the class");
         Intent resultIntent = new Intent(this, SingleMusicPlayer.class);
         String aString = Integer.toString(k);
         resultIntent.putExtra("id",k);
+
         // Create the TaskStackBuilder and add the intent, which inflates the back stack
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addNextIntentWithParentStack(resultIntent);
+
         // Get the PendingIntent containing the entire back stack
         PendingIntent resultPendingIntent =
                 stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
                 .setContentTitle("Afternoon Aarti")
                 .setContentText("It's Afternoon Aarti time.Click to listen Aarti.")

@@ -30,22 +30,11 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
     private Button aftSubmit;
     private Button eveSubmit;
     public Integer var=null;
-    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer_setting);
-//        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-//            @Override
-//            public void onInitializationComplete(InitializationStatus initializationStatus) {
-//            }
-//        });
-//
-//        mAdView = findViewById(R.id.adView);
-//        AdRequest adRequest = new AdRequest.Builder().build();
-//        mAdView.loadAd(adRequest);
-        //adView.setAdUnitId("ca-app-pub-3940256099942544~3347511713");
         addListenerOnButtonBtn();
         addListenerOnButtonMgn();
         addListenerOnButtonEve();
@@ -122,7 +111,6 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
             Intent intent = new Intent(this, AlertReceiver.class);
             Bundle extras = new Bundle();
             extras.putInt("arg_1", getvar);
-//        extras.putInt("arg_2", 2);
             intent.putExtras(extras);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, FLAG_UPDATE_CURRENT);
             if (c.before(Calendar.getInstance())) {
@@ -133,7 +121,6 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
             Intent intent = new Intent(this, AlertReceiver2.class);
             Bundle extras = new Bundle();
             extras.putInt("arg_1", getvar);
-//        extras.putInt("arg_2", 2);
             intent.putExtras(extras);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, FLAG_UPDATE_CURRENT);
             if (c.before(Calendar.getInstance())) {
@@ -145,7 +132,6 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
             Intent intent = new Intent(this, AlertReceiver3.class);
             Bundle extras = new Bundle();
             extras.putInt("arg_1", getvar);
-//        extras.putInt("arg_2", 2);
             intent.putExtras(extras);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, FLAG_UPDATE_CURRENT);
             if (c.before(Calendar.getInstance())) {
@@ -161,7 +147,6 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
         c.set(Calendar.HOUR_OF_DAY, hourOfDay);
         c.set(Calendar.MINUTE, minute);
         c.set(Calendar.SECOND, 0);
-        //updateTimeText(c);
         startAlarm(c,var);
     }
 
