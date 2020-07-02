@@ -5,7 +5,7 @@
 
     <string name="select_time">Select Aarti Notification Time</string>
     <string name="language_prompt">Select a language</string>
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="banner_ad_unit_id"></string>
 
     <string-array name="language_array">
         <item>English</item>

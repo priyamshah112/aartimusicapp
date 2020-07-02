@@ -95,8 +95,6 @@ public class SingleMusicPlayer extends AppCompatActivity {
 
         audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
 
-
-
         if (Global.sMediaPlayer != null) {
             Global.sMediaPlayer.stop();
         }
@@ -172,6 +170,13 @@ public class SingleMusicPlayer extends AppCompatActivity {
         });
 
 
+        Global.sMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                onBackPressed();
+            }
+        });
+
         //volume Seekbar
 
         vSeekBar.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
@@ -220,8 +225,6 @@ public class SingleMusicPlayer extends AppCompatActivity {
             public void run() {
                 while (Global.sMediaPlayer != null) {
                     try {
-//                        Log.i("Thread ", "Thread Called");
-                        // create new message to send to handler
                         if (Global.sMediaPlayer.isPlaying()) {
                             Message msg = new Message();
                             msg.what = Global.sMediaPlayer.getCurrentPosition();
@@ -285,5 +288,18 @@ public class SingleMusicPlayer extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        try {
+            System.out.println("Back pressed");
+            if (Global.sMediaPlayer.isPlaying()) {
+                System.out.println("playing aarti stop");
+                Global.sMediaPlayer.stop();
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Aarti Player Null Object");
+        }
+        super.onBackPressed();
+    }
 }

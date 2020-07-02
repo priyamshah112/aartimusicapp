@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
@@ -29,8 +30,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import java.util.HashMap;
+
+import static com.google.android.gms.ads.AdSize.BANNER;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar mToolbar;
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     String MyAdUnitId1;
     private FirebaseRemoteConfig mFirebaseRemoteConfig;
 
-    private AdView mmAdView;
+//    private AdView mmAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //"ca-app-pub-3940256099942544/1033173712"
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         setting = findViewById(R.id.setting);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle(getString(R.string.app_name));
+       // AdView adView = new AdView(this);
 
         mTabLayout = findViewById(R.id.tabLayout);
         libraryTabItem = findViewById(R.id.libraryTabItem);
@@ -80,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
                     //change package name here
                     if(Integer.parseInt(version) > getVersionCode())
-                        showTheDialog("com.facebook.lite", version );
+                        showTheDialog("com.example.letsplay", version );
                 }
                 else Log.e("MYLOG", "mFirebaseRemoteConfig.fetchAndActivate() NOT Successful");
 
@@ -136,16 +141,31 @@ public class MainActivity extends AppCompatActivity {
 
         Firebase.setAndroidContext(this);
         Firebase myFirebase = new Firebase("https://bhajan-d2833.firebaseio.com/admob1");
+        AdView mAdView = new AdView(this);
         myFirebase.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(com.firebase.client.DataSnapshot dataSnapshot) {
                 MyAdUnitId1 = dataSnapshot.getValue(String.class);
-                Log.w("gt the id "+MyAdUnitId1,"captured the id in main acrtivuty");
+                Log.w("gt the id "+MyAdUnitId1,"captured the banner admob id in main activity");
                 if(MyAdUnitId1!=null) {
-                    mmAdView = findViewById(R.id.adView);
-                    mmAdView.setAdUnitId(MyAdUnitId1);
-                    AdRequest aadRequestt = new AdRequest.Builder().build();
-                    mmAdView.loadAd(aadRequestt);
+
+
+                    mAdView.setAdSize(AdSize.BANNER);
+                    mAdView.setAdUnitId(MyAdUnitId1);
+                    AdRequest adRequest = new AdRequest.Builder()
+                            .build();
+                    if(mAdView.getAdSize() != null || mAdView.getAdUnitId() != null)
+                        mAdView.loadAd(adRequest);
+                    // else Log state of adsize/adunit
+                    ((LinearLayout)findViewById(R.id.adView)).addView(mAdView);
+//                    adView.setAdSize(AdSize.BANNER);
+//                    adView.setAdUnitId(MyAdUnitId1);
+////                    mmAdView = findViewById(R.id.adView);
+////                    mmAdView.setAdSize(AdSize.BANNER);
+////                    mmAdView.setAdUnitId(MyAdUnitId1);
+//                    AdRequest aadRequestt = new AdRequest.Builder().build();
+//                    adView.loadAd(aadRequestt);
                 }
             }
 
