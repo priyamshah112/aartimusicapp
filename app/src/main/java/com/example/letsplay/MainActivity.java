@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Firebase.setAndroidContext(this);
-        Firebase myFirebase = new Firebase("https://bhajan-d2833.firebaseio.com/admob1");
+        Firebase myFirebase = new Firebase("https://bhajan-d2833.firebaseio.com/admob");
         myFirebase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(com.firebase.client.DataSnapshot dataSnapshot) {
