@@ -12,7 +12,9 @@
         android:background="@color/colorMorning"
         android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="35dp"
         android:layout_weight="3" >
 
         <Button
@@ -29,7 +31,9 @@
 
         android:background="@color/colorNoon"
         android:layout_height="0dp"
-        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="35dp"
         android:layout_width="match_parent"
         android:layout_weight="3" >
 
@@ -46,7 +50,8 @@
     <LinearLayout
         android:background="@color/colorEvening"
         android:layout_height="0dp"
-        android:layout_margin="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="35dp"
         android:layout_width="match_parent"
         android:layout_weight="3" >
 
