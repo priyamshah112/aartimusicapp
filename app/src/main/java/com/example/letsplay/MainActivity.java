@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private AdView mmAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //"ca-app-pub-3940256099942544/1033173712"
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mToolbar = findViewById(R.id.toolbar);
