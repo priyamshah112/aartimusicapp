@@ -4,8 +4,10 @@
     package="com.example.letsplay">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,6 +17,9 @@
         tools:replace="android:appComponentFactory"
         android:appComponentFactory="whateverString"
         >
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
         <activity android:name=".Setting"></activity>
         <activity android:name=".TimerSetting" />
         <activity android:name=".LanguageSelector" />
@@ -26,6 +31,8 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+                <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -33,6 +40,8 @@
         <receiver android:name=".AlertReceiver" />
         <receiver android:name=".AlertReceiver2" />
         <receiver android:name=".AlertReceiver3" />
-    </application>
+
+    </application
+        >
 
 </manifest>
