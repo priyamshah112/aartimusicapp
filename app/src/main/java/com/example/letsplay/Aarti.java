@@ -1,16 +1,22 @@
 package com.example.letsplay;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.v4.app.Fragment;
-import android.util.Log;
+
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -22,6 +28,8 @@ public class Aarti extends Fragment implements View.OnClickListener {
     Button mrngbutton;
     Button noonbutton;
     Button eveningbutton;
+//    //Context thiscontext;
+//    private AdView mAdView;
     int[] allSongs = {R.raw.morning,R.raw.afternoon,R.raw.evening};
     public Aarti() {
         // Required empty public constructor
@@ -36,6 +44,8 @@ public class Aarti extends Fragment implements View.OnClickListener {
         System.out.println("Inflating Aarti Fragment here");
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_aarti, container, false);
+
+
         mrngbutton = (Button) v.findViewById(R.id.MorningBtn);
         mrngbutton.setOnClickListener(this);
 
@@ -44,7 +54,6 @@ public class Aarti extends Fragment implements View.OnClickListener {
 
         eveningbutton = (Button) v.findViewById(R.id.EveningBtn);
         eveningbutton.setOnClickListener(this);
-
         return v;
     }
 
@@ -108,4 +117,5 @@ public class Aarti extends Fragment implements View.OnClickListener {
         eveningbutton = (Button) view.findViewById(R.id.EveningBtn);
 
     }
+
 }

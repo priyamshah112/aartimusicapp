@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "319665187358",
+    "firebase_url": "https://bhajan-d2833.firebaseio.com",
+    "project_id": "bhajan-d2833",
+    "storage_bucket": "bhajan-d2833.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319665187358:android:0e30afe52a017ade33dc0f",
+        "android_client_info": {
+          "package_name": "com.example.letsplay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "319665187358-bl03lbb03oe62grsbedkjig5sdjap4hj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.letsplay",
+            "certificate_hash": "6c1db2d7d0d527d642ef136abb5b4480b7af706b"
+          }
+        },
+        {
+          "client_id": "319665187358-v5k8q8ud2mjo7lnop85q6v35j7f5u53i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMO-FhWHwBCvlOIzq6rU2lB_db09YOAxQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "319665187358-v5k8q8ud2mjo7lnop85q6v35j7f5u53i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

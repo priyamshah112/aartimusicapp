@@ -8,15 +8,27 @@ import android.media.MediaPlayer;
 //import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+
 //import java.io.File;
 //import java.util.ArrayList;
+// errror tweek https://dominoc925.blogspot.com/2019/08/resolving-android-studio-cannot-fit.html#:~:text=August%2012%2C%202019-,Resolving%20Android%20Studio%20%22Cannot%20fit%20requested%20classes,a%20single%20dex%20file%22%20error&text=The%20solution%20to%20this%20is,new%20dependency%20to%20the%20androidx.
 
 public class SingleMusicPlayer extends AppCompatActivity {
     SeekBar mSeekBar;
@@ -32,12 +44,45 @@ public class SingleMusicPlayer extends AppCompatActivity {
     Bundle bundle;
     SeekBar vSeekBar;
     AudioManager audioManager;
+    String MyAdUnitId;
+    InterstitialAd mInterstitialAd;
+    Integer flagmob=0;
 
+    String MyAdUnitId1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
+        mInterstitialAd = new InterstitialAd(this);
+        MobileAds.initialize(this,
+                "ca-app-pub-3940256099942544~3347511713");
 
+        Firebase.setAndroidContext(this);
+        Firebase myFirebase = new Firebase("https://bhajan-d2833.firebaseio.com/admob");
+        myFirebase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(com.firebase.client.DataSnapshot dataSnapshot) {
+                MyAdUnitId1 = dataSnapshot.getValue(String.class);
+                Log.w("gt the id "+MyAdUnitId1,"captured the id in main acrtivuty");
+                if(MyAdUnitId1!=null) {
+                    flagmob=1;
+                    MyAdUnitId = dataSnapshot.getValue(String.class);
+
+                    mInterstitialAd.setAdUnitId(MyAdUnitId);
+                    mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                }
+                //mInterstitialAd.show();
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+
+
+
+        });
         mSeekBar = findViewById(R.id.mSeekBar);
         songTitle = findViewById(R.id.songTitle);
         curTime = findViewById(R.id.curTime);
@@ -67,6 +112,16 @@ public class SingleMusicPlayer extends AppCompatActivity {
         playIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(flagmob==1) {
+                    AdRequest adRequest = new AdRequest.Builder().build();
+                    mInterstitialAd.loadAd(adRequest);
+
+                    if (mInterstitialAd.isLoaded()) {
+                        mInterstitialAd.show();
+                    } else {
+                        Log.d("TAG", "The interstitial wasn't loaded yet.");
+                    }
+                }
                 play();
             }
         });
@@ -75,7 +130,6 @@ public class SingleMusicPlayer extends AppCompatActivity {
 
 
     private void initPlayer() {
-
         //stop mMediaPlayer
 
         try{
@@ -230,4 +284,6 @@ public class SingleMusicPlayer extends AppCompatActivity {
 
 
     }
+
+
 }
