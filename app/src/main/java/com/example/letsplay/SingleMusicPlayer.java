@@ -222,12 +222,12 @@ public class SingleMusicPlayer extends AppCompatActivity {
             }
         });
 
-        Global.sMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                onBackPressed();
-            }
-        });
+//        Global.sMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mp) {
+//                onBackPressed();
+//            }
+//        });
         //volume Seekbar
 
         vSeekBar.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
@@ -311,26 +311,26 @@ public class SingleMusicPlayer extends AppCompatActivity {
         if (Global.sMediaPlayer != null && !Global.sMediaPlayer.isPlaying()) {
             Global.sMediaPlayer.start();
                             playIcon.setImageResource(R.drawable.ic_pause_black_24dp);
-
-                int noOfSecond = 1;
-
-                new Handler().postDelayed(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        //TODO Set your button auto perform click.
-                        playIcon.performClick();
-                    }
-                }, noOfSecond * 1000);
-
-                new Handler().postDelayed(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        //TODO Set your button auto perform click.
-                        playIcon.performClick();
-                    }
-                }, noOfSecond * 1000);
+//
+//                int noOfSecond = 1;
+//
+//                new Handler().postDelayed(new Runnable() {
+//
+//                    @Override
+//                    public void run() {
+//                        //TODO Set your button auto perform click.
+//                        playIcon.performClick();
+//                    }
+//                }, noOfSecond * 1000);
+//
+//                new Handler().postDelayed(new Runnable() {
+//
+//                    @Override
+//                    public void run() {
+//                        //TODO Set your button auto perform click.
+//                        playIcon.performClick();
+//                    }
+//                }, noOfSecond * 1000);
 
             playIcon.setImageResource(R.drawable.ic_pause_black_24dp);
         } else {
@@ -365,21 +365,21 @@ public class SingleMusicPlayer extends AppCompatActivity {
 
 
     }
-
-    @Override
-    public void onBackPressed() {
-        try {
-            System.out.println("Back pressed");
-            if (Global.sMediaPlayer.isPlaying()) {
-                System.out.println("playing aarti stop");
-                Global.sMediaPlayer.stop();
-            }
-        }
-        catch (Exception e) {
-            System.out.println("Aarti Player Null Object");
-        }
-        super.onBackPressed();
-    }
+//
+//    @Override
+//    public void onBackPressed() {
+//        try {
+//            System.out.println("Back pressed");
+//            if (Global.sMediaPlayer.isPlaying()) {
+//                System.out.println("playing aarti stop");
+//                Global.sMediaPlayer.stop();
+//            }
+//        }
+//        catch (Exception e) {
+//            System.out.println("Aarti Player Null Object");
+//        }
+//        super.onBackPressed();
+//    }
 }
 /*
 package com.example.letsplay;
