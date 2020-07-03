@@ -311,26 +311,26 @@ public class SingleMusicPlayer extends AppCompatActivity {
         if (Global.sMediaPlayer != null && !Global.sMediaPlayer.isPlaying()) {
             Global.sMediaPlayer.start();
             playIcon.setImageResource(R.drawable.ic_pause_black_24dp);
-
-            int noOfSecond = 1;
-
-            new Handler().postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    //TODO Set your button auto perform click.
-                    playIcon.performClick();
-                }
-            }, noOfSecond * 1000);
-
-            new Handler().postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    //TODO Set your button auto perform click.
-                    playIcon.performClick();
-                }
-            }, noOfSecond * 1000);
+//
+//                int noOfSecond = 1;
+//
+//                new Handler().postDelayed(new Runnable() {
+//
+//                    @Override
+//                    public void run() {
+//                        //TODO Set your button auto perform click.
+//                        playIcon.performClick();
+//                    }
+//                }, noOfSecond * 1000);
+//
+//                new Handler().postDelayed(new Runnable() {
+//
+//                    @Override
+//                    public void run() {
+//                        //TODO Set your button auto perform click.
+//                        playIcon.performClick();
+//                    }
+//                }, noOfSecond * 1000);
 
             playIcon.setImageResource(R.drawable.ic_pause_black_24dp);
         } else {
