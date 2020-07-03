@@ -142,74 +142,77 @@ public class SingleMusicPlayer extends AppCompatActivity {
             Global.sMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.morning); // create and load mediaplayer with song resources
 
             int noOfSecond = 1;
+            if(MyAdUnitId1!=null) {
+                new Handler().postDelayed(new Runnable() {
 
-            new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //TODO Set your button auto perform click.
+                        playIcon.performClick();
+                    }
+                }, noOfSecond * 1000);
 
-                @Override
-                public void run() {
-                    //TODO Set your button auto perform click.
-                    playIcon.performClick();
-                }
-            }, noOfSecond * 1000);
+                new Handler().postDelayed(new Runnable() {
 
-            new Handler().postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    //TODO Set your button auto perform click.
-                    playIcon.performClick();
-                }
-            }, noOfSecond * 1000);
+                    @Override
+                    public void run() {
+                        //TODO Set your button auto perform click.
+                        playIcon.performClick();
+                    }
+                }, noOfSecond * 1000);
+            }
         }
         if(bundle.getInt("id")==2){
             songTitle.setText("Noon");
             Global.sMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.afternoon); // create and load mediaplayer with song resources
 
-            int noOfSecond = 1;
+            if(MyAdUnitId1!=null) {
+                int noOfSecond = 1;
 
-            new Handler().postDelayed(new Runnable() {
+                new Handler().postDelayed(new Runnable() {
 
-                @Override
-                public void run() {
-                    //TODO Set your button auto perform click.
-                    playIcon.performClick();
-                }
-            }, noOfSecond * 1000);
+                    @Override
+                    public void run() {
+                        //TODO Set your button auto perform click.
+                        playIcon.performClick();
+                    }
+                }, noOfSecond * 1000);
 
-            new Handler().postDelayed(new Runnable() {
+                new Handler().postDelayed(new Runnable() {
 
-                @Override
-                public void run() {
-                    //TODO Set your button auto perform click.
-                    playIcon.performClick();
-                }
-            }, noOfSecond * 1000);
-
+                    @Override
+                    public void run() {
+                        //TODO Set your button auto perform click.
+                        playIcon.performClick();
+                    }
+                }, noOfSecond * 1000);
+            }
         }
         if(bundle.getInt("id")==3){
             songTitle.setText("Evening");
             Global.sMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.evening); // create and load mediaplayer with song resources
 
-            int noOfSecond = 1;
+            if(MyAdUnitId1!=null) {
+                int noOfSecond = 1;
 
-            new Handler().postDelayed(new Runnable() {
+                new Handler().postDelayed(new Runnable() {
 
-                @Override
-                public void run() {
-                    //TODO Set your button auto perform click.
-                    playIcon.performClick();
-                }
-            }, noOfSecond * 1000);
+                    @Override
+                    public void run() {
+                        //TODO Set your button auto perform click.
+                        playIcon.performClick();
+                    }
+                }, noOfSecond * 1000);
 
-            new Handler().postDelayed(new Runnable() {
+                new Handler().postDelayed(new Runnable() {
 
-                @Override
-                public void run() {
-                    //TODO Set your button auto perform click.
-                    playIcon.performClick();
-                }
-            }, noOfSecond * 1000);
-
+                    @Override
+                    public void run() {
+                        //TODO Set your button auto perform click.
+                        playIcon.performClick();
+                    }
+                }, noOfSecond * 1000);
+            }
         }
         Global.sMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
