@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.w("gt the id "+MyAdUnitId1,"captured the id in main acrtivuty");
                 if(MyAdUnitId1!=null) {
                     mmAdView = findViewById(R.id.adView);
-                    mmAdView.setAdUnitId(MyAdUnitId1);
+                    //mmAdView.setAdUnitId(MyAdUnitId1);
                     AdRequest aadRequestt = new AdRequest.Builder().build();
                     mmAdView.loadAd(aadRequestt);
                 }
