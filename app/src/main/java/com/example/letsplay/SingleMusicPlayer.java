@@ -104,24 +104,17 @@ public class SingleMusicPlayer extends AppCompatActivity {
         playerData = getIntent();
         bundle = playerData.getExtras();
 
+
+
         //position = bundle.getInt("position", 0);
         initPlayer();
 
-
+        mInterstitialAd.show();
 
         playIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(flagmob==1) {
-                    AdRequest adRequest = new AdRequest.Builder().build();
-                    mInterstitialAd.loadAd(adRequest);
 
-                    if (mInterstitialAd.isLoaded()) {
-                        mInterstitialAd.show();
-                    } else {
-                        Log.d("TAG", "The interstitial wasn't loaded yet.");
-                    }
-                }
                 play();
             }
         });
@@ -130,6 +123,18 @@ public class SingleMusicPlayer extends AppCompatActivity {
 
 
     private void initPlayer() {
+
+//        if(flagmob==1) {
+//            AdRequest adRequest = new AdRequest.Builder().build();
+//            mInterstitialAd.loadAd(adRequest);
+//
+//            if (mInterstitialAd.isLoaded()) {
+//                mInterstitialAd.show();
+//            } else {
+//                Log.d("TAG", "The interstitial wasn't loaded yet.");
+//            }
+//        }
+
         //stop mMediaPlayer
 
         try{
@@ -171,6 +176,12 @@ public class SingleMusicPlayer extends AppCompatActivity {
             }
         });
 
+        Global.sMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                onBackPressed();
+            }
+        });
 
         //volume Seekbar
 
@@ -284,6 +295,22 @@ public class SingleMusicPlayer extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onBackPressed() {
+        try {
+            System.out.println("Back pressed");
+            if (Global.sMediaPlayer.isPlaying()) {
+                System.out.println("playing aarti stop");
+                Global.sMediaPlayer.stop();
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Aarti Player Null Object");
+        }
+        super.onBackPressed();
+    }
+
 
 
 }
