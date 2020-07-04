@@ -9,7 +9,7 @@
     tools:context=".Aarti"
     android:padding="5dp">
     <LinearLayout
-        android:background="@color/colorMorning"
+        android:background="@color/colorBackground"
         android:layout_height="0dp"
         android:layout_width="match_parent"
         android:layout_margin="10dp"
@@ -21,7 +21,7 @@
             android:adjustViewBounds="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorMorning"
+            android:background="@color/colorBackground"
             android:onClick="MorningAartiPlayer"
             android:text="@string/mrng_aarti"
             android:textSize="30sp"
@@ -31,7 +31,7 @@
     </LinearLayout>
     <LinearLayout
 
-        android:background="@color/colorNoon"
+        android:background="@color/colorBackground"
         android:layout_height="0dp"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
@@ -43,7 +43,7 @@
             android:adjustViewBounds="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorNoon"
+            android:background="@color/colorBackground"
             android:onClick="NoonAartiPlayer"
             android:text="@string/noon_aarti"
             android:textSize="30sp"
@@ -52,7 +52,7 @@
 
     </LinearLayout>
     <LinearLayout
-        android:background="@color/colorEvening"
+        android:background="@color/colorBackground"
         android:layout_height="0dp"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
@@ -64,7 +64,7 @@
             android:adjustViewBounds="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorEvening"
+            android:background="@color/colorBackground"
             android:onClick="EveningAartiPlayer"
             android:text="@string/eve_aarti"
             android:textColor="#FFFFFF"
