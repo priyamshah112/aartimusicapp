@@ -8,6 +8,7 @@ import android.content.Intent;
 import androidx.fragment.app.DialogFragment;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TimePicker;
@@ -51,6 +52,25 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
 
             @Override
             public void onClick(View v) {
+                Calendar c1 = Calendar.getInstance();
+                c1.set(Calendar.HOUR_OF_DAY, 20);
+                c1.set(Calendar.MINUTE, 0);
+                c1.set(Calendar.SECOND, 0);
+                var=1;
+                startAlarm(c1,var);
+                Calendar c2 = Calendar.getInstance();
+                c2.set(Calendar.HOUR_OF_DAY, 13);
+                c2.set(Calendar.MINUTE, 30);
+                c2.set(Calendar.SECOND, 0);
+                var=2;
+                startAlarm(c2,var);
+                Calendar c3 = Calendar.getInstance();
+                c3.set(Calendar.HOUR_OF_DAY, 20);
+                c3.set(Calendar.MINUTE, 0);
+                c3.set(Calendar.SECOND, 0);
+                var=3;
+                startAlarm(c3,var);
+
                 Intent myIntent = new Intent(TimerSetting.this,MainActivity.class);
                 startActivity(myIntent);
             }
@@ -145,7 +165,9 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        System.out.println(hourOfDay);
         c.set(Calendar.MINUTE, minute);
+        System.out.println(minute);
         c.set(Calendar.SECOND, 0);
         startAlarm(c,var);
     }
