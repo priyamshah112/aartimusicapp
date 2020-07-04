@@ -138,7 +138,7 @@ public class SingleMusicPlayer extends AppCompatActivity {
         }
 
         if(bundle.getInt("id")==1){
-            songTitle.setText("Morning");
+            songTitle.setText("Nitayniyam");
             Global.sMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.morning); // create and load mediaplayer with song resources
 
             int noOfSecond = 1;
@@ -163,7 +163,7 @@ public class SingleMusicPlayer extends AppCompatActivity {
             }
         }
         if(bundle.getInt("id")==2){
-            songTitle.setText("Noon");
+            songTitle.setText("Ramini");
             Global.sMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.afternoon); // create and load mediaplayer with song resources
 
             if(MyAdUnitId1!=null) {
@@ -189,7 +189,7 @@ public class SingleMusicPlayer extends AppCompatActivity {
             }
         }
         if(bundle.getInt("id")==3){
-            songTitle.setText("Evening");
+            songTitle.setText("Sandhya");
             Global.sMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.evening); // create and load mediaplayer with song resources
 
             if(MyAdUnitId1!=null) {
