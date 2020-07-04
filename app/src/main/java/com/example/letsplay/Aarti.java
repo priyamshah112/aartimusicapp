@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -25,9 +26,9 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class Aarti extends Fragment implements View.OnClickListener {
-    Button mrngbutton;
-    Button noonbutton;
-    Button eveningbutton;
+    ImageButton mrngbutton;
+    ImageButton noonbutton;
+    ImageButton eveningbutton;
 //    //Context thiscontext;
 //    private AdView mAdView;
     int[] allSongs = {R.raw.morning,R.raw.afternoon,R.raw.evening};
@@ -46,13 +47,13 @@ public class Aarti extends Fragment implements View.OnClickListener {
         View v = inflater.inflate(R.layout.fragment_aarti, container, false);
 
 
-        mrngbutton = (Button) v.findViewById(R.id.MorningBtn);
+        mrngbutton = (ImageButton) v.findViewById(R.id.MorningBtn);
         mrngbutton.setOnClickListener(this);
 
-        noonbutton = (Button) v.findViewById(R.id.NoonBtn);
+        noonbutton = (ImageButton) v.findViewById(R.id.NoonBtn);
         noonbutton.setOnClickListener(this);
 
-        eveningbutton = (Button) v.findViewById(R.id.EveningBtn);
+        eveningbutton = (ImageButton) v.findViewById(R.id.EveningBtn);
         eveningbutton.setOnClickListener(this);
         return v;
     }
@@ -103,18 +104,18 @@ public class Aarti extends Fragment implements View.OnClickListener {
     }
 
     public void MorningAartiPlayer(View view){
-        mrngbutton = (Button) view.findViewById(R.id.MorningBtn);
+        mrngbutton = (ImageButton) view.findViewById(R.id.MorningBtn);
 
 
     }
 
     public void NoonAartiPlayer(View view){
-        noonbutton = (Button) view.findViewById(R.id.NoonBtn);
+        noonbutton = (ImageButton) view.findViewById(R.id.NoonBtn);
 
     }
 
     public void EveningAartiPlayer(View view){
-        eveningbutton = (Button) view.findViewById(R.id.EveningBtn);
+        eveningbutton = (ImageButton) view.findViewById(R.id.EveningBtn);
 
     }
 
