@@ -53,7 +53,7 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
             @Override
             public void onClick(View v) {
                 Calendar c1 = Calendar.getInstance();
-                c1.set(Calendar.HOUR_OF_DAY, 20);
+                c1.set(Calendar.HOUR_OF_DAY, 19);
                 c1.set(Calendar.MINUTE, 0);
                 c1.set(Calendar.SECOND, 0);
                 var=1;
@@ -65,7 +65,7 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
                 var=2;
                 startAlarm(c2,var);
                 Calendar c3 = Calendar.getInstance();
-                c3.set(Calendar.HOUR_OF_DAY, 20);
+                c3.set(Calendar.HOUR_OF_DAY, 19);
                 c3.set(Calendar.MINUTE, 0);
                 c3.set(Calendar.SECOND, 0);
                 var=3;
