@@ -31,7 +31,9 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
     private Button aftSubmit;
     private Button eveSubmit;
     public Integer var=null;
-
+    public Integer var1=0;
+    public Integer var2=0;
+    public Integer var3=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,25 +54,30 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
 
             @Override
             public void onClick(View v) {
-                Calendar c1 = Calendar.getInstance();
-                c1.set(Calendar.HOUR_OF_DAY, 19);
-                c1.set(Calendar.MINUTE, 0);
-                c1.set(Calendar.SECOND, 0);
-                var=1;
-                startAlarm(c1,var);
-                Calendar c2 = Calendar.getInstance();
-                c2.set(Calendar.HOUR_OF_DAY, 13);
-                c2.set(Calendar.MINUTE, 30);
-                c2.set(Calendar.SECOND, 0);
-                var=2;
-                startAlarm(c2,var);
-                Calendar c3 = Calendar.getInstance();
-                c3.set(Calendar.HOUR_OF_DAY, 19);
-                c3.set(Calendar.MINUTE, 0);
-                c3.set(Calendar.SECOND, 0);
-                var=3;
-                startAlarm(c3,var);
-
+                if(var1==0) {
+                    Calendar c1 = Calendar.getInstance();
+                    c1.set(Calendar.HOUR_OF_DAY, 20);
+                    c1.set(Calendar.MINUTE, 0);
+                    c1.set(Calendar.SECOND, 0);
+                    var = 1;
+                    startAlarm(c1, var);
+                }
+                if(var2==0) {
+                    Calendar c2 = Calendar.getInstance();
+                    c2.set(Calendar.HOUR_OF_DAY, 13);
+                    c2.set(Calendar.MINUTE, 30);
+                    c2.set(Calendar.SECOND, 0);
+                    var = 2;
+                    startAlarm(c2, var);
+                }
+                if(var3==0) {
+                    Calendar c3 = Calendar.getInstance();
+                    c3.set(Calendar.HOUR_OF_DAY, 20);
+                    c3.set(Calendar.MINUTE, 0);
+                    c3.set(Calendar.SECOND, 0);
+                    var = 3;
+                    startAlarm(c3, var);
+                }
                 Intent myIntent = new Intent(TimerSetting.this,MainActivity.class);
                 startActivity(myIntent);
             }
@@ -89,6 +96,7 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
                 DialogFragment timePicker = new TimePickerFragment();
                 timePicker.show(getSupportFragmentManager(), "time picker");
                 var=1;
+                var1=1;
             }
 
         });
@@ -103,6 +111,7 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
                 DialogFragment timePicker = new TimePickerFragment();
                 timePicker.show(getSupportFragmentManager(), "time picker");
                 var=2;
+                var2=1;
             }
 
         });
@@ -119,6 +128,7 @@ public class TimerSetting extends AppCompatActivity implements TimePickerDialog.
                 DialogFragment timePicker = new TimePickerFragment();
                 timePicker.show(getSupportFragmentManager(), "time picker");
                 var=3;
+                var3=1;
             }
 
         });
