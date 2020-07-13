@@ -8,18 +8,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:319665187358:android:0e30afe52a017ade33dc0f",
+        "mobilesdk_app_id": "1:319665187358:android:bed5818511200f0233dc0f",
         "android_client_info": {
-          "package_name": "com.example.letsplay"
+          "package_name": "com.softglu.satkabiraarti"
         }
       },
       "oauth_client": [
         {
-          "client_id": "319665187358-bl03lbb03oe62grsbedkjig5sdjap4hj.apps.googleusercontent.com",
+          "client_id": "319665187358-0u41m6j2ap7ltpvo0n6mf93fa11jeh6n.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.letsplay",
-            "certificate_hash": "6c1db2d7d0d527d642ef136abb5b4480b7af706b"
+            "package_name": "com.softglu.satkabiraarti",
+            "certificate_hash": "f3fb0d67be4cf93e0b13d95328e3488d1a584e78"
           }
         },
         {

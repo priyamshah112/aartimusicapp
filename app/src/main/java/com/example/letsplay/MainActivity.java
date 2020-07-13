@@ -1,7 +1,9 @@
 package com.example.letsplay;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -30,6 +32,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import java.net.InetAddress;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
@@ -64,28 +67,29 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, Object> defaultsRate = new HashMap<>();
         defaultsRate.put("version", String.valueOf(getVersionCode()));
 
-        mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
-        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
-                .setMinimumFetchIntervalInSeconds(10) // change to 3600 on published app
-                .build();
+            mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+            FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
+                    .setMinimumFetchIntervalInSeconds(10) // change to 3600 on published app
+                    .build();
 
-        mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
-        mFirebaseRemoteConfig.setDefaultsAsync(defaultsRate);
+            mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
+            mFirebaseRemoteConfig.setDefaultsAsync(defaultsRate);
 
-        mFirebaseRemoteConfig.fetchAndActivate().addOnCompleteListener(this, new OnCompleteListener<Boolean>() {
-            @Override
-            public void onComplete(@NonNull Task<Boolean> task) {
-                if (task.isSuccessful()) {
-                    final String version = mFirebaseRemoteConfig.getString("version");
+            mFirebaseRemoteConfig.fetchAndActivate().addOnCompleteListener(this, new OnCompleteListener<Boolean>() {
+                @Override
+                public void onComplete(@NonNull Task<Boolean> task) {
+                    if (task.isSuccessful()) {
+                        final String version = mFirebaseRemoteConfig.getString("version");
 
-                    //change package name here
-                    if(Integer.parseInt(version) > getVersionCode())
-                        showTheDialog("com.facebook.lite", version );
+                        //change package name here
+                        if(Integer.parseInt(version) > getVersionCode())
+                            showTheDialog("com.facebook.lite", version );
+                    }
+                    else Log.e("MYLOG", "mFirebaseRemoteConfig.fetchAndActivate() NOT Successful");
+
                 }
-                else Log.e("MYLOG", "mFirebaseRemoteConfig.fetchAndActivate() NOT Successful");
+            });
 
-            }
-        });
 
 
         mPagerAdapter = new PagerAdapter(getSupportFragmentManager(),mTabLayout.getTabCount()); // call the pager class
@@ -158,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
 //        AdRequest aadRequestt = new AdRequest.Builder().build();
 //        mmAdView.loadAd(aadRequestt);
     }
+
 
     private void showTheDialog(final String appPackageName, String versionFromRemoteConfig){
         final AlertDialog dialog = new AlertDialog.Builder(this)

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
 import android.os.Handler;
 import android.os.Message;
 
@@ -22,6 +23,8 @@ import com.firebase.client.ValueEventListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+
+import java.net.InetAddress;
 
 
 public class SingleMusicPlayer extends AppCompatActivity {
@@ -44,87 +47,131 @@ public class SingleMusicPlayer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mInterstitialAd = new InterstitialAd(this);
-        MobileAds.initialize(this,
-                "ca-app-pub-3940256099942544~3347511713");
 
-        Firebase.setAndroidContext(this);
-        Firebase myFirebase = new Firebase("https://bhajan-d2833.firebaseio.com/admob");
-        myFirebase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(com.firebase.client.DataSnapshot dataSnapshot) {
-                MyAdUnitId1 = dataSnapshot.getValue(String.class);
-                Log.w("gt the id "+MyAdUnitId1,"captured the id in main acrtivuty");
-                if(MyAdUnitId1!=null) {
-                    flagmob=1;
-                    MyAdUnitId = dataSnapshot.getValue(String.class);
+        if (isInternetAvailable()) {
+            System.out.println(" Online ");
+            mInterstitialAd = new InterstitialAd(this);
+            MobileAds.initialize(this,
+                    "ca-app-pub-3940256099942544~3347511713");
+            Firebase.setAndroidContext(this);
+            Firebase myFirebase = new Firebase("https://bhajan-d2833.firebaseio.com/admob");
+            myFirebase.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(com.firebase.client.DataSnapshot dataSnapshot) {
+                    MyAdUnitId1 = dataSnapshot.getValue(String.class);
+                    Log.w("gt the id " + MyAdUnitId1, "captured the id in main acrtivuty");
+                    if (MyAdUnitId1 != null) {
+                        flagmob = 1;
+                        MyAdUnitId = dataSnapshot.getValue(String.class);
 
-                    mInterstitialAd.setAdUnitId(MyAdUnitId);
-                    mInterstitialAd.loadAd(new AdRequest.Builder().build());
-                }
-
-                //mInterstitialAd.show();
-                setContentView(R.layout.activity_player);
-
-                mSeekBar = findViewById(R.id.mSeekBar);
-                songTitle = findViewById(R.id.songTitle);
-                curTime = findViewById(R.id.curTime);
-                totTime = findViewById(R.id.totalTime);
-
-                playIcon = findViewById(R.id.playIcon);
-                prevIcon = findViewById(R.id.prevIcon);
-                nextIcon = findViewById(R.id.nextIcon);
-                vSeekBar = findViewById(R.id.vseekBar);
-
-                audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
-
-
-
-                if (Global.sMediaPlayer != null) {
-                    Global.sMediaPlayer.stop();
-                }
-
-                playerData = getIntent();
-                bundle = playerData.getExtras();
-
-                initPlayer();
-
-
-
-                playIcon.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(flagmob==1) {
-
-                            if (mInterstitialAd.isLoaded()) {
-                                mInterstitialAd.show();
-                            } else {
-                                Log.d("TAG", "The interstitial wasn't loaded yet.");
-                            }
-                        }
-                        play();
+                        mInterstitialAd.setAdUnitId(MyAdUnitId);
+                        mInterstitialAd.loadAd(new AdRequest.Builder().build());
                     }
-                });
 
+                    //mInterstitialAd.show();
+                    setContentView(R.layout.activity_player);
+
+                    mSeekBar = findViewById(R.id.mSeekBar);
+                    songTitle = findViewById(R.id.songTitle);
+                    curTime = findViewById(R.id.curTime);
+                    totTime = findViewById(R.id.totalTime);
+
+                    playIcon = findViewById(R.id.playIcon);
+                    prevIcon = findViewById(R.id.prevIcon);
+                    nextIcon = findViewById(R.id.nextIcon);
+                    vSeekBar = findViewById(R.id.vseekBar);
+
+                    audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+
+
+                    if (Global.mMediaPlayer != null) {
+                        Global.mMediaPlayer.stop();
+                    }
+
+                    playerData = getIntent();
+                    bundle = playerData.getExtras();
+
+                    initPlayer();
+
+
+                    playIcon.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (flagmob == 1) {
+
+                                if (mInterstitialAd.isLoaded()) {
+                                    mInterstitialAd.show();
+                                } else {
+                                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                                }
+                            }
+                            play();
+                        }
+                    });
+
+
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+
+
+            });
+        }
+        else{
+
+            System.out.println("offline Mode");
+
+            setContentView(R.layout.activity_player);
+
+            mSeekBar = findViewById(R.id.mSeekBar);
+            songTitle = findViewById(R.id.songTitle);
+            curTime = findViewById(R.id.curTime);
+            totTime = findViewById(R.id.totalTime);
+
+            playIcon = findViewById(R.id.playIcon);
+            prevIcon = findViewById(R.id.prevIcon);
+            nextIcon = findViewById(R.id.nextIcon);
+            vSeekBar = findViewById(R.id.vseekBar);
+
+            audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+
+
+            if (Global.mMediaPlayer != null) {
+                Global.mMediaPlayer.stop();
             }
 
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
+            playerData = getIntent();
+            bundle = playerData.getExtras();
 
-            }
+            initPlayer2();
 
 
+            playIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    play();
+                }
+            });
 
-        });
+
+        }
     }
 
+    private boolean isInternetAvailable() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+    }
 
     private void initPlayer() {
         //stop mMediaPlayer
 
         try{
 
-            if (Global.mMediaPlayer.isPlaying()) {
+            if (Global.mMediaPlayer != null && Global.mMediaPlayer.isPlaying()) {
                 System.out.println("playing library stop from Aarti Player");
                 Global.mMediaPlayer.stop();
             }
@@ -221,7 +268,124 @@ public class SingleMusicPlayer extends AppCompatActivity {
                 totTime.setText(totalTime);
                 mSeekBar.setMax(Global.sMediaPlayer.getDuration());
                 Global.sMediaPlayer.start();
+                playIcon.setImageResource(R.drawable.ic_pause_black_24dp);
+            }
+        });
 
+        Global.sMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                onBackPressed();
+            }
+        });
+        //volume Seekbar
+
+        vSeekBar.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
+        vSeekBar.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
+
+        vSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int newVolume, boolean b) {
+
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, newVolume, 0);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+
+
+        //Music Seekbar
+        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+                if (fromUser) {
+                    Global.sMediaPlayer.seekTo(progress);
+                    mSeekBar.setProgress(progress);
+                }
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (Global.sMediaPlayer != null) {
+                    try {
+//                        Log.i("Thread ", "Thread Called");
+                        // create new message to send to handler
+                        if (Global.sMediaPlayer.isPlaying()) {
+                            Message msg = new Message();
+                            msg.what = Global.sMediaPlayer.getCurrentPosition();
+                            handler.sendMessage(msg);
+                            Thread.sleep(1000);
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+
+    }
+
+    private void initPlayer2() {
+        //stop mMediaPlayer
+
+        try{
+
+            if (Global.mMediaPlayer != null && Global.mMediaPlayer.isPlaying()) {
+                System.out.println("playing library stop from Aarti Player");
+                Global.mMediaPlayer.stop();
+            }
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+
+        if (Global.sMediaPlayer != null && Global.sMediaPlayer.isPlaying()) {
+            Global.sMediaPlayer.reset();
+        }
+
+        if(bundle.getInt("id")==1){
+            songTitle.setText("Nitayniyam");
+            Global.sMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.morning); // create and load mediaplayer with song resources
+
+            int noOfSecond = 1;
+
+        }
+        if(bundle.getInt("id")==2){
+            songTitle.setText("Ramini");
+            Global.sMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.afternoon); // create and load mediaplayer with song resources
+
+        }
+        if(bundle.getInt("id")==3){
+            songTitle.setText("Sandhya");
+            Global.sMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.evening); // create and load mediaplayer with song resources
+
+        }
+        Global.sMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                String totalTime = createTimeLabel(Global.sMediaPlayer.getDuration());
+                totTime.setText(totalTime);
+                mSeekBar.setMax(Global.sMediaPlayer.getDuration());
+                Global.sMediaPlayer.start();
+                playIcon.setImageResource(R.drawable.ic_pause_black_24dp);
             }
         });
 
@@ -310,31 +474,8 @@ public class SingleMusicPlayer extends AppCompatActivity {
 
     private void play() {
 
-
         if (Global.sMediaPlayer != null && !Global.sMediaPlayer.isPlaying()) {
             Global.sMediaPlayer.start();
-            playIcon.setImageResource(R.drawable.ic_pause_black_24dp);
-//
-//                int noOfSecond = 1;
-//
-//                new Handler().postDelayed(new Runnable() {
-//
-//                    @Override
-//                    public void run() {
-//                        //TODO Set your button auto perform click.
-//                        playIcon.performClick();
-//                    }
-//                }, noOfSecond * 1000);
-//
-//                new Handler().postDelayed(new Runnable() {
-//
-//                    @Override
-//                    public void run() {
-//                        //TODO Set your button auto perform click.
-//                        playIcon.performClick();
-//                    }
-//                }, noOfSecond * 1000);
-
             playIcon.setImageResource(R.drawable.ic_pause_black_24dp);
         } else {
             pause();
